@@ -11,13 +11,19 @@ function App() {
 
   return (
     <>
-      <div>
-        <Carousel />
-        <Header />
-        <div>Lukas Larsed</div>
+      <div className="container">
+        <div className="left-section">
+          <div className="decor"></div>
+          <Carousel className="carousel" />
+        </div>
+        <div className="right-section">
+          <div className="header-container">
+            <Header />
+          </div>
+        </div>
       </div>
     </>
-  )
+  );
 }
 
 export default App
