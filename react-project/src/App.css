@@ -68,3 +68,15 @@
   color: #a29320;
   transform: rotate(-45deg);
 }
+
+.dropdown-menu {
+  border: none !important;
+  border-right: 1px solid #a29320 !important;
+  --bs-dropdown-border-radius: none !important;
+  --bs-dropdown-min-width: 18rem !important;
+  text-align: end !important;
+}
+
+.dropdown-item:hover {
+  border-right: 2px solid #a29320 !important;
+}
