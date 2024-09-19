@@ -1,0 +1,35 @@
+.left-section {
+  flex: 7;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+  display: flex;
+}
+
+.decor {
+  flex: 0.5;
+  position: relative;
+}
+
+.decor::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  width: 1px;
+  background-color: #a29320;
+  transform: translateX(-50%);
+}
+
+.carousel {
+  flex: 6.5;
+}
+
+.right-section {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}

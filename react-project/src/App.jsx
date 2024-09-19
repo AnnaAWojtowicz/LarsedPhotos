@@ -4,24 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Carousel } from './components/Carousel.jsx'
 import { Header } from './components/Header.jsx'
-
+import { Home } from './components/Home.jsx'
+import { Country } from './components/Country.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className="container">
-        <div className="left-section">
-          <div className="decor"></div>
-          <Carousel className="carousel" />
-        </div>
-        <div className="right-section">
-          <div className="header-container">
-            <Header />
-          </div>
-        </div>
-      </div>
+      {/* <Home /> */}
+      <Country />
     </>
   );
 }
