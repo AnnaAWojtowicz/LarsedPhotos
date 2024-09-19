@@ -1,5 +1,11 @@
 * {
   box-sizing: border-box;
+  background-color: white;
+}
+
+.bg-body-tertiary {
+  --bs-bg-opacity: 0 !important;
+  background-color: none !important;
 }
 
 .container {
@@ -18,7 +24,18 @@
 
 .decor {
   flex: 0.5;
-  background-color: red;
+  position: relative;
+}
+
+.decor::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 80%;
+  width: 1px;
+  background-color: #a29320;
+  transform: translateX(-50%);
 }
 
 .carousel {
@@ -75,6 +92,7 @@
   --bs-dropdown-border-radius: none !important;
   --bs-dropdown-min-width: 18rem !important;
   text-align: end !important;
+  margin-top: 3rem !important;
 }
 
 .dropdown-item:hover {
