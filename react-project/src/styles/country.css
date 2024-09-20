@@ -1,7 +1,6 @@
 .container-country {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 }
 
 .header-country {
@@ -9,7 +8,6 @@
   width: 100%;
   position: relative;
   right: 0;
-  border-bottom: 1px solid #a29320;
 }
 
 .big-photo-country {
@@ -20,18 +18,29 @@
 
 .name-country {
   font-family: "Orbitron", system-ui;
-  font-size: 23vw; /* Use viewport width to make the font size responsive */
   text-align: center;
-  width: 100%; /* Ensure it takes the full width of the screen */
+  padding: 0 0.5rem;
+  margin: -3rem 0;
+  font-size: 17vw;
+  width: 100%; /* Ensure it takes the full width of the container */
   white-space: nowrap; /* Prevent text from wrapping to the next line */
   overflow: hidden; /* Hide overflow text */
   text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
   text-shadow: -1px -1px 0 #a29320, 1px -1px 0 #a29320, -1px 1px 0 #a29320,
     1px 1px 0 #a29320;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 600px) {
   .name-country {
     font-size: 15vw; /* Adjust font size for smaller screens */
   }
+}
+
+.golden-line {
+  width: 100%;
+  height: 1px;
+  background-color: #a29320;
 }
