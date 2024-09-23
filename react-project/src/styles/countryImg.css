@@ -17,6 +17,39 @@
   padding: 0.5rem 0;
 }
 
+.symbol-details-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem 0.5rem 0;
+  border-right: 1px solid #a29320;
+}
+
+.symbols-img-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.symbols-img-details-text {
+  font-family: "Quicksand", system-ui;
+  font-size: 1rem;
+  padding-left: 1rem;
+}
+
+.symbols-img-details-map {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  border: 0.5px solid black;
+  filter: grayscale(100%);
+}
+
+.map-text {
+  display: block;
+  text-align: center;
+}
+
 .container-text-country-img {
   padding-right: 1rem;
   font-family: "Quicksand", system-ui;

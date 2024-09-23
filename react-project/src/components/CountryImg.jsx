@@ -1,8 +1,9 @@
 import React from 'react';
 import "../styles/countryImg.css";
 import img5 from "../img/img5.jpg";
+import mapImg from "../img/mapImg.png";
 
-export function CountryImg() {
+export function CountryImg(props) {
     return (
         <>
             <div className='row img-section'>
@@ -10,18 +11,30 @@ export function CountryImg() {
                     <img src={img5} className="big-photo-country" alt="..." />
                 </div>
                 <div className='col-3 d-flex flex-column justify-content-center'>
-                    <div className='symbols-country-img d-flex flex-column align-items-start justify-content-center flex-grow-1'>
-                        <div class="material-symbols-outlined symbol-country-img">
-                            camera
+                    <div className='symbols-country-img d-flex flex-column align-items-stretch justify-content-center flex-grow-1'>
+                        <div className='symbol-details-group'>
+                            <span className="material-symbols-outlined symbol-country-img">
+                                camera
+                            </span>
+                            <span className="symbols-img-details-text">{props.camera}</span>
                         </div>
-                        <div class="material-symbols-outlined symbol-country-img">
-                            map
+                        <div className="d-flex align-items-center symbol-details-group">
+                            <span className="material-symbols-outlined symbol-country-img">
+                                map
+                            </span>
+                            <span className="symbols-img-details">
+                                <span className="symbols-img-details-text"><img src={mapImg} alt="a map" className="symbols-img-details-map" /></span>
+                                <span className="symbols-img-details-text map-text">{props.map}</span>
+                            </span>
                         </div>
-                        <div class="material-symbols-outlined symbol-country-img">
-                            tag
+                        <div className='symbol-details-group'>
+                            <span className="material-symbols-outlined symbol-country-img">
+                                tag
+                            </span>
+                            <span className="symbols-img-details-text">{props.tag}</span>
                         </div>
                     </div>
-                    <div className='container-text-country-img'>The picture was taken on a quiet hillside overlooking a sprawling valley, just as the sun began to set.</div>
+                    <div className='container-text-country-img'>{props.descriptionImg}</div>
                 </div>
             </div>
         </>
