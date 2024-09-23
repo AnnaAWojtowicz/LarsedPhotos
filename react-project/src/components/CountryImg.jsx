@@ -11,7 +11,7 @@ export function CountryImg(props) {
                     <img src={img5} className="big-photo-country" alt="..." />
                 </div>
                 <div className='col-3 d-flex flex-column justify-content-center'>
-                    <div className='symbols-country-img d-flex flex-column align-items-stretch justify-content-center flex-grow-1'>
+                    <div className='symbols-country-img-container d-flex flex-column align-items-stretch justify-content-center flex-grow-1'>
                         <div className='symbol-details-group'>
                             <span className="material-symbols-outlined symbol-country-img">
                                 camera
