@@ -11,10 +11,19 @@
 }
 
 .symbol-country-img {
-  color: #a29320;
+  color: #a29320; /* remember to delete it when you fix the button function */
   font-weight: 200;
   font-size: 1.5rem;
   padding: 0.5rem 0;
+}
+
+button {
+  border: none !important;
+  color: black !important;
+}
+
+button:hover {
+  color: #a29320 !important;
 }
 
 .symbol-details-group {

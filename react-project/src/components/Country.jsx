@@ -1,6 +1,7 @@
 import React from 'react';
 import "../styles/country.css";
 import img5 from "../img/img5.jpg";
+import mapImg from "../img/mapImg.png";
 import { Header } from "./Header.jsx";
 import { CountryImg } from './CountryImg.jsx';
 
@@ -22,13 +23,15 @@ export function Country(props) {
 
                     <div className='col-12 golden-line'></div>
                     <div className='col-12'>
-                        <CountryImg camera="sth sth" map="sth sth" mapImg="bilde" tag={["#Toronto1", "#Toronto2"]} descriptionImg="The picture was taken on a quiet hillside overlooking a sprawling valley, just as the sun began to set." />
+                        <CountryImg
+                            camera="Canon EF70-300mm f/4-5.6 IS USM"
+                            map="sth sth"
+                            mapImg={mapImg}
+                            tag={["#Toronto1", "#Toronto2"]}
+                            descriptionImg="The picture was taken on a quiet hillside overlooking a sprawling valley, just as the sun began to set." />
                         <CountryImg />
                     </div>
                 </div>
-
-
-
             </div>
         </>
     )
