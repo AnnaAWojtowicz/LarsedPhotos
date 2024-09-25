@@ -13,13 +13,13 @@ export function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <NavDropdown title="Lukas Larsed" id="basic-nav-dropdown">
-                            <NavDropdown.Item className="menu-country" href="#action/3.1">Action</NavDropdown.Item>
+                            <NavDropdown.Item className="menu-country" href="#action/3.1">Canada</NavDropdown.Item>
                             <NavDropdown.Item className="menu-country" href="#action/3.2">
-                                Another action
+                                Egypt
                             </NavDropdown.Item>
-                            <NavDropdown.Item className="menu-country" href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Item className="menu-country" href="#action/3.3">Germany / Berlin</NavDropdown.Item>
                             <NavDropdown.Item className="menu-country" href="#action/3.4">
-                                Separated link
+                                Iceland
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
