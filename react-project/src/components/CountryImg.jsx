@@ -35,22 +35,22 @@ export function CountryImg(props) {
                             <button onClick={showCameraDetails} className="material-symbols-outlined symbol-country-img">
                                 camera
                             </button>
-                            {/* <span className="symbols-img-details-text">{props.camera}</span> */}
+                            <span className="symbols-img-details-text">{props.camera}</span>
                         </div>
                         <div className="d-flex align-items-center symbol-details-group">
                             <button onClick={showMapDetails} className="material-symbols-outlined symbol-country-img">
                                 map
                             </button>
-                            {/* <span className="symbols-img-details">
+                            <span className="symbols-img-details">
                                 <span className="symbols-img-details-text"><img src={mapImg} alt="a map" className="symbols-img-details-map" /></span>
                                 <span className="symbols-img-details-text map-text">{props.map}</span>
-                            </span> */}
+                            </span>
                         </div>
                         <div className='symbol-details-group'>
                             <button onClick={showTagDetails} className="material-symbols-outlined symbol-country-img">
                                 tag
                             </button>
-                            {/* <span className="symbols-img-details-text">{props.tag}</span> */}
+                            <span className="symbols-img-details-text">{props.tag}</span>
                         </div>
 
 

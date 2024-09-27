@@ -29,6 +29,10 @@ export function Country(props) {
                             mapImg={mapImg}
                             tag={["#Toronto1", "#Toronto2"]}
                             descriptionImg="The picture was taken on a quiet hillside overlooking a sprawling valley, just as the sun began to set." />
+                        <CountryImg />
+                        <CountryImg />
+                        <CountryImg />
+                        <CountryImg />
                     </div>
                 </div>
             </div>
