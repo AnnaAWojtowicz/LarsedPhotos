@@ -36,9 +36,13 @@
   font-size: 1.5rem;
 }
 
+a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
+  display: none !important;
+}
+
 .dropdown-toggle::after {
   font-family: "Material Symbols Outlined" !important;
-  content: "\eac3" !important; /* Replace this with the correct symbol code */
+  content: "\eac3" !important;
   font-weight: normal;
   font-size: 2rem;
   vertical-align: middle !important;
@@ -48,6 +52,11 @@
   border-right: 0 !important;
   color: #a29320;
   transform: rotate(-45deg);
+  transition: transform 0.3s ease;
+}
+
+#basic-nav-dropdown .dropdown-toggle.active::after {
+  transform: rotate(-135deg) !important;
 }
 
 .dropdown-menu {
