@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/carousel.css';
+import { homeApi } from '../api/homeApi';
 
 const images = [
     '/src/img/img1.jpg',
@@ -10,6 +11,7 @@ const images = [
 ];
 
 export function Carousel() {
+    const [images, setImages] = useState([]);
     const carouselRef = useRef(null);
 
     useEffect(() => {

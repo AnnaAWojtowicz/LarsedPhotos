@@ -7,11 +7,13 @@ import { Header } from './components/Header.jsx'
 import { Home } from './components/Home.jsx'
 import { Country } from './components/Country.jsx'
 
+
+
 function App() {
 
   return (
     <>
-      {/* <Home /> */}
+      <Home />
       <Country />
     </>
   );
