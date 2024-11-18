@@ -1,4 +1,4 @@
-const home = new URL('https://fn-flickr-pelsedyr-prod.azurewebsites.net/api');
+const home = new URL('https://fn-flickr-pelsedyr-prod.azurewebsites.net/api/AllPhotos?randomOrder=true');
 
 export async function getPhotos() {
     const API_KEY = process.env.REACT_APP_API_KEY;
