@@ -18,7 +18,7 @@ export function Carousel() {
         const fetchImages = async () => {
             try {
                 const data = await getPhotos();
-                setImages(data.photos.map(photo => photo.url640));
+                setImages(data.results.map(photo => photo.url640));
             } catch (error) {
                 console.error('Error fetching images:', error);
             }
@@ -41,7 +41,7 @@ export function Carousel() {
             }
         };
 
-        const intervalId = setInterval(scrollStep, 20);
+        const intervalId = setInterval(scrollStep, 40);
 
         return () => clearInterval(intervalId);
     }, [images]);
