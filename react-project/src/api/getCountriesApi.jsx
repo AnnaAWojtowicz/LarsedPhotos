@@ -1,10 +1,11 @@
-const home = "https://fn-flickr-pelsedyr-prod.azurewebsites.net/api/AllPhotos?randomOrder=true";
+let countries = "https://fn-flickr-pelsedyr-prod.azurewebsites.net/api/Albums?randomOrder=false";
 
-export async function getPhotos() {
+export async function getCountriesApi() {
+
     const API_KEY = import.meta.env.VITE_API_KEY;
 
     try {
-        const response = await fetch(home, {
+        const response = await fetch(countries, {
             headers: {
                 'x-function-key': API_KEY
             }
@@ -18,4 +19,5 @@ export async function getPhotos() {
         console.error('Error fetching photos:', error);
         throw error;
     }
+
 }

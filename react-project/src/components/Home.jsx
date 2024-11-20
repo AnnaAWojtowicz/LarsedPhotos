@@ -3,7 +3,6 @@ import "../styles/home.css";
 import { Carousel } from "./Carousel.jsx";
 import { Header } from "./Header.jsx";
 
-
 export function Home() {
     return (
         <>

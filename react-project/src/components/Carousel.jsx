@@ -41,7 +41,7 @@ export function Carousel() {
             }
         };
 
-        const intervalId = setInterval(scrollStep, 40);
+        const intervalId = setInterval(scrollStep, 20);
 
         return () => clearInterval(intervalId);
     }, [images]);

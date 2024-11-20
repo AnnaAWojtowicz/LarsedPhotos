@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "../App.css";
+import { getCountriesApi } from '../api/getCountriesApi';
 
 export function Header() {
 
     const [isDropdownActive, setIsDropdownActive] = useState(false);
+    const [countries, setCountries] = useState([]);
 
     const handleDropdownToggle = () => {
         console.log('Dropdown toggle clicked');
@@ -16,6 +18,18 @@ export function Header() {
         console.log('isDropdownActive:', !isDropdownActive);
     };
 
+    useEffect(() => {
+        const fetchCountries = async () => {
+            try {
+                const data = await getCountriesApi();
+                const sortedCountries = data.results.map(country => country.title).sort();
+                setCountries(sortedCountries);
+            } catch (error) {
+                console.error('Error fetching countries:', error);
+            }
+        };
+        fetchCountries();
+    }, []);
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -32,14 +46,13 @@ export function Header() {
                             id="basic-nav-dropdown"
                             onClick={handleDropdownToggle}
                         >
-                            <NavDropdown.Item className="menu-country" href="#action/3.1">Canada</NavDropdown.Item>
-                            <NavDropdown.Item className="menu-country" href="#action/3.2">
-                                Egypt
-                            </NavDropdown.Item>
-                            <NavDropdown.Item className="menu-country" href="#action/3.3">Germany / Berlin</NavDropdown.Item>
-                            <NavDropdown.Item className="menu-country" href="#action/3.4">
-                                Iceland
-                            </NavDropdown.Item>
+
+                            {countries.map((title, index) => (
+                                <NavDropdown.Item key={index} className="menu-country" href={`#action/${index + 1}`}>
+                                    {title}
+                                </NavDropdown.Item>
+                            ))}
+
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
