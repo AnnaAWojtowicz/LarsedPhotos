@@ -22,7 +22,7 @@ export function Header() {
         const fetchCountries = async () => {
             try {
                 const data = await getCountriesApi();
-                const sortedCountries = data.results.map(country => country.title).sort();
+                const sortedCountries = data.results.sort((a, b) => a.title.localeCompare(b.title));
                 setCountries(sortedCountries);
             } catch (error) {
                 console.error('Error fetching countries:', error);
@@ -47,9 +47,10 @@ export function Header() {
                             onClick={handleDropdownToggle}
                         >
 
-                            {countries.map((title, index) => (
-                                <NavDropdown.Item key={index} className="menu-country" href={`#action/${index + 1}`}>
-                                    {title}
+                            {countries.map((country, index) => (
+                                <NavDropdown.Item
+                                    key={index} className="menu-country" href={`#action/${country.id}`}>
+                                    {country.title}
                                 </NavDropdown.Item>
                             ))}
 
