@@ -27,7 +27,7 @@ export function CountryImg(props) {
         <>
             <div className='row img-section'>
                 <div className='col-9'>
-                    <img src={img5} className="big-photo-country" alt="..." />
+                    <img src={props.img} className="big-photo-country" alt={props.title} />
                 </div>
                 <div className='col-3 d-flex flex-column justify-content-center'>
                     <div className='symbols-country-img-container d-flex flex-column align-items-stretch justify-content-center flex-grow-1'>
