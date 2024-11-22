@@ -1,6 +1,7 @@
 .container-country {
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
 }
 
 .header-country {
@@ -20,16 +21,17 @@
   font-family: "Orbitron", system-ui;
   text-align: center;
   padding: 0 0.5rem;
-  margin: -3rem 0;
+  margin: 0 auto;
   font-size: 17vw;
-  width: 100%; /* Ensure it takes the full width of the container */
-  white-space: nowrap; /* Prevent text from wrapping to the next line */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+  max-width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
   text-shadow: -1px -1px 0 #a29320, 1px -1px 0 #a29320, -1px 1px 0 #a29320,
     1px 1px 0 #a29320;
+  text-align: left;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
