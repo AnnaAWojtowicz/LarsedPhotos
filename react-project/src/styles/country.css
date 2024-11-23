@@ -21,7 +21,8 @@
   font-family: "Orbitron", system-ui;
   text-align: center;
   padding: 0 0.5rem;
-  margin: 0 auto;
+  margin: 7rem auto;
+
   font-size: 17vw;
   max-width: 100%;
   word-wrap: break-word;
@@ -30,6 +31,7 @@
   text-shadow: -1px -1px 0 #a29320, 1px -1px 0 #a29320, -1px 1px 0 #a29320,
     1px 1px 0 #a29320;
   text-align: left;
+  line-height: 0.8;
   display: flex;
   justify-content: start;
   align-items: center;

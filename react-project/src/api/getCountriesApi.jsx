@@ -1,4 +1,4 @@
-let countries = "https://fn-flickr-pelsedyr-prod.azurewebsites.net/api/Albums?randomOrder=false";
+let countries = "https://fn-flex-flickr-pelsedyr-prod.azurewebsites.net/api/Albums?randomOrder=false";
 
 export async function getCountriesApi() {
 

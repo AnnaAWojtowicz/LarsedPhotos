@@ -3,7 +3,7 @@
 let getSpecificCountryAlbum = async (countryId) => {
 
     const API_KEY = import.meta.env.VITE_API_KEY;
-    let specificCountryAlbum = `https://fn-flickr-pelsedyr-prod.azurewebsites.net/api/Album/${countryId}?randomOrder=false`;
+    let specificCountryAlbum = `https://fn-flex-flickr-pelsedyr-prod.azurewebsites.net/api/Album/${countryId}?randomOrder=false`;
 
     try {
         const response = await fetch(specificCountryAlbum, {
