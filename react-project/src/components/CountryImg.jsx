@@ -23,6 +23,10 @@ export function CountryImg(props) {
         return <span className="symbols-img-details-text">{props.tag}</span>
     }
 
+    function showInNewWindow() {
+        window.open(props.img, '_blank', 'noopener,noreferrer');
+    }
+
     return (
         <>
             <div className='row img-section'>
@@ -31,6 +35,11 @@ export function CountryImg(props) {
                 </div>
                 <div className='col-3 d-flex flex-column justify-content-center'>
                     <div className='symbols-country-img-container d-flex flex-column align-items-stretch justify-content-center flex-grow-1'>
+                        <div className='symbol-details-group'>
+                            <button onClick={showInNewWindow} className="material-symbols-outlined symbol-country-img">
+                                new_window
+                            </button>
+                        </div>
                         <div className='symbol-details-group'>
                             <button onClick={showCameraDetails} className="material-symbols-outlined symbol-country-img">
                                 camera
@@ -42,7 +51,7 @@ export function CountryImg(props) {
                                 map
                             </button>
                             <span className="symbols-img-details">
-                                <span className="symbols-img-details-text"><img src={mapImg} alt="a map" className="symbols-img-details-map" /></span>
+                                {/* <span className="symbols-img-details-text"><img src={mapImg} alt="a map" className="symbols-img-details-map" /></span> */}
                                 <span className="symbols-img-details-text map-text">{props.map}</span>
                             </span>
                         </div>
@@ -52,6 +61,7 @@ export function CountryImg(props) {
                             </button>
                             <span className="symbols-img-details-text">{props.tag}</span>
                         </div>
+
 
 
                         {/* <SymbolButton symbol="camera" camera={props.camera} />

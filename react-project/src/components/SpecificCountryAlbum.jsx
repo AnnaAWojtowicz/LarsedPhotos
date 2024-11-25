@@ -34,8 +34,8 @@ function SpecificCountryAlbum() {
     }
 
     // specific image to present the country
-    const specificImageId = "52343768231";
-    const specificImage = albumData.results.find(photo => photo.id === specificImageId);
+
+    const specificImage = albumData.results[0];
     const landscapeName = countryName === "Landscapes" ? "Land-<br />scapes" : countryName;
 
     return (
@@ -45,11 +45,7 @@ function SpecificCountryAlbum() {
                     <div className='col-12 d-flex justify-content-end header-country'><Header /></div>
                     <div className='col-12 golden-line'></div>
                     <div className='col-9'>
-                        {specificImage ? (
-                            <img src={specificImage.url640} className="big-photo-country" alt={specificImage.title} />
-                        ) : (
-                            <img src={img5} className="big-photo-country" alt="Default" />
-                        )}
+                        <img src={specificImage.url2048} className="big-photo-country" alt={specificImage.title} />
                     </div>
                     <div className='col-9'>
                         <div className="name-country" title={countryName}>
