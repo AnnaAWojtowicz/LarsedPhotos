@@ -8,6 +8,7 @@ import { Header } from "./Header.jsx";
 import { CountryImg } from './CountryImg.jsx';
 
 
+
 function SpecificCountryAlbum() {
     const { id } = useParams();
     const location = useLocation();
@@ -65,14 +66,11 @@ function SpecificCountryAlbum() {
                         {albumData.results.map((photo) => (
                             <CountryImg
                                 key={photo.id}
+                                imgId={photo.id}
                                 img={photo.url2048}
-                                // camera="Canon EF70-300mm f/4-5.6 IS USM"
-                                // map="sth sth"
-                                // mapImg={mapImg}
-                                // tag={["#Toronto1", "#Toronto2"]}
-                                // descriptionImg="The picture was taken on a quiet hillside overlooking a sprawling valley, just as the sun began to set." 
-
                                 descriptionImg={photo.title}
+                                camera={photo.camera ? photo.camera.fullName : "Unknown Camera"}
+                                tag={photo.tags}
                             />
                         ))}
                     </div>

@@ -1,0 +1,25 @@
+
+
+let getSpecificImgDetails = async (imgId) => {
+
+    const API_KEY = import.meta.env.VITE_API_KEY;
+    let specificImgDetailsUrl = `https://fn-flex-flickr-pelsedyr-prod.azurewebsites.net/api/Exif/${imgId}`;
+
+    try {
+        const response = await fetch(specificImgDetailsUrl, {
+            headers: {
+                'x-function-key': API_KEY
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching specific img details:', error);
+        throw error;
+    }
+};
+
+export { getSpecificImgDetails };

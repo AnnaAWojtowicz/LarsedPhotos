@@ -17,12 +17,15 @@
   padding: 0.5rem 0;
 }
 
-button {
-  border: none !important;
+button.symbol-button {
+  background: none;
+  border: none;
+  cursor: pointer;
   color: black !important;
+  outline: none;
 }
 
-button:hover {
+button.symbol-button:hover {
   color: #a29320 !important;
 }
 
