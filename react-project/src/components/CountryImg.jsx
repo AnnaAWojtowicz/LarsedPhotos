@@ -113,8 +113,18 @@ export function CountryImg({ imgId, img, descriptionImg, camera, map, tag }) {
                         </div>
                         <div className='symbol-details-group'>
                             <SymbolButton onClick={() => setShowCamera(!showCamera)} icon="camera" />
-                            {showCamera && imgDetails && (
-                                <span className="symbols-img-details-text">{imgDetails.camera?.fullName || "Unknown Camera"}</span>
+                            {showCamera && imgDetails.length > 0 && (
+                                <div className="symbols-img-details-text">
+                                    {imgDetails.map((detail, index) => (
+                                        <div key={index}>
+                                            <p>Camera: {detail.camera?.fullName || "Unknown Camera"}</p>
+                                            <p>Lens: {detail.lens?.lensModel || "Unknown Lens"}</p>
+                                            <p>Exposure Time: {detail.exposure?.exposureTime || "Unknown Exposure Time"}</p>
+                                            <p>Aperture: {detail.exposure?.aperture || "Unknown Aperture"}</p>
+                                            <p>ISO: {detail.exposure?.iso || "Unknown ISO"}</p>
+                                        </div>
+                                    ))}
+                                </div>
                             )}
                         </div>
                         <div className="d-flex align-items-center symbol-details-group">
