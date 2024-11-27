@@ -8,7 +8,7 @@ import { getSpecificImgDetails } from '../api/getSpecificImgDetails';
 
 export function CountryImg({ imgId, img, descriptionImg, camera, map, tag }) {
 
-    const [imgDetails, setImgDetails] = useState(null);
+    const [imgDetails, setImgDetails] = useState([]);
     const [showCamera, setShowCamera] = useState(false);
     const [showMap, setShowMap] = useState(false);
     const [showTag, setShowTag] = useState(false);
@@ -17,7 +17,12 @@ export function CountryImg({ imgId, img, descriptionImg, camera, map, tag }) {
         const fetchImgDetails = async () => {
             try {
                 const data = await getSpecificImgDetails(imgId);
-                setImgDetails(data);
+                console.log('Fetched data:', data);
+                if (data.results && data.results.length > 0) {
+                    setImgDetails(data.results);
+                } else {
+                    console.error('No results found');
+                }
             } catch (error) {
                 console.error('Error fetching specific image details:', error);
             }
@@ -107,9 +112,9 @@ export function CountryImg({ imgId, img, descriptionImg, camera, map, tag }) {
                             <SymbolButton onClick={showInNewWindow} icon="new_window" className="symbol-button" />
                         </div>
                         <div className='symbol-details-group'>
-                            <SymbolButton onClick={() => setShowCamera(!showCamera)} icon="camera" className="symbol-button" />
-                            {showCamera && (
-                                <span className="symbols-img-details-text">{camera}</span>
+                            <SymbolButton onClick={() => setShowCamera(!showCamera)} icon="camera" />
+                            {showCamera && imgDetails && (
+                                <span className="symbols-img-details-text">{imgDetails.camera?.fullName || "Unknown Camera"}</span>
                             )}
                         </div>
                         <div className="d-flex align-items-center symbol-details-group">
@@ -125,8 +130,16 @@ export function CountryImg({ imgId, img, descriptionImg, camera, map, tag }) {
                         </div>
                         <div className='symbol-details-group'>
                             <SymbolButton onClick={() => setShowTag(!showTag)} icon="tag" className="symbol-button" />
-                            {showTag && (
-                                <span className="symbols-img-details-text">{tag.join(', ')}</span>
+                            {showTag && imgDetails.length > 0 && (
+                                <div className="symbols-img-details-text">
+                                    {imgDetails.map((detail, index) => (
+                                        <div key={index}>
+                                            {detail.tags.map((tag, tagIndex) => (
+                                                <span key={tagIndex} className="tag-item">#{tag} </span>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
                             )}
                         </div>
                     </div>
