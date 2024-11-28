@@ -61,10 +61,26 @@ button.symbol-button:hover {
 .map-text {
   display: block;
   text-align: center;
+
+  margin-top: 1rem;
 }
 
 .container-text-country-img {
   padding-right: 1rem;
   font-family: "Quicksand", system-ui;
   align-self: end;
+}
+
+.leaflet-shadow-pane {
+  display: none;
+}
+
+.leaflet-marker-icon {
+  background-color: transparent;
+}
+
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+  border-radius: 50%;
+  border: 0.5px solid black;
+  filter: grayscale(100%);
 }

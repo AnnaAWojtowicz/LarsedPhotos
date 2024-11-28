@@ -45,9 +45,9 @@ function SpecificCountryAlbum() {
                 <div className='row'>
                     <div className='col-12 d-flex justify-content-end header-country'><Header /></div>
                     <div className='col-12 golden-line'></div>
-                    <div className='col-9'>
+                    {/* <div className='col-9'>
                         <img src={specificImage.url2048} className="big-photo-country" alt={specificImage.title} />
-                    </div>
+                    </div> */}
                     <div className='col-9'>
                         <div className="name-country" title={countryName}>
                             {landscapeName === "Land-<br />scapes" ? (
