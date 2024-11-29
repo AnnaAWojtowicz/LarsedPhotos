@@ -15,20 +15,24 @@ function SpecificCountryAlbum() {
     const { album, countryName } = location.state || {};
 
     const [albumData, setAlbumData] = useState(album);
+    const [currentCountryName, setCurrentCountryName] = useState(countryName);
 
     useEffect(() => {
-        if (!albumData) {
-            const fetchAlbum = async () => {
-                try {
-                    const data = await getSpecificCountryAlbum(id);
-                    setAlbumData(data);
-                } catch (error) {
-                    console.error('Error fetching specific country album:', error);
-                }
-            };
+
+        const fetchAlbum = async () => {
+            try {
+                const data = await getSpecificCountryAlbum(id);
+                setAlbumData(data);
+                setCurrentCountryName(data.countryName || countryName);
+            } catch (error) {
+                console.error('Error fetching specific country album:', error);
+            }
+        };
+
+        if (!albumData || albumData.countryId !== id) {
             fetchAlbum();
         }
-    }, [id, albumData]);
+    }, [id]);
 
     if (!albumData) {
         return <div>Loading...</div>;

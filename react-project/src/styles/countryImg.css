@@ -61,7 +61,6 @@ button.symbol-button:hover {
 .map-text {
   display: block;
   text-align: center;
-
   margin-top: 1rem;
 }
 
@@ -71,6 +70,9 @@ button.symbol-button:hover {
   align-self: end;
   margin-top: 2rem;
   font-size: 1.5rem;
+  /* border-right: #a29320 1px solid;
+  align-self: start;
+  margin-right: 1rem; */
 }
 
 .leaflet-shadow-pane {
