@@ -109,7 +109,8 @@ export function CountryImg({ imgId, img, descriptionImg }) {
                                                         </Marker>
                                                     </MapContainer>
                                                 </span>
-                                                <span className="symbols-img-details-text map-text">{imageDetail.location?.country}, {imageDetail.location?.region}</span>
+                                                <div className="symbols-img-details-text map-text">{imageDetail.location?.country}, {imageDetail.location?.region}</div>
+                                                <div className="symbols-img-details-text map-text">{latitude}, {longitude}</div>
                                             </div>
                                         )}
                                     </div>
