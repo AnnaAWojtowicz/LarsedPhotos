@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import "../styles/countryImg.css";
 import { SymbolButton } from './SymbolButton';
 import { getSpecificImgDetails } from '../api/getSpecificImgDetails';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+const LazyMapContainer = React.lazy(() => import('react-leaflet').then(module => ({ default: module.MapContainer })));
+import { TileLayer, Marker } from 'react-leaflet';
+
+
 
 export function CountryImg({ imgId, img, descriptionImg }) {
     const [imgDetails, setImgDetails] = useState([]);
@@ -72,42 +75,23 @@ export function CountryImg({ imgId, img, descriptionImg }) {
                                             </div>
                                         )}
                                     </div>
-
-                                    {/* Symbol Button - Show Map */}
-                                    {/* <div className="d-flex align-items-center symbol-details-group">
-                                        <SymbolButton onClick={() => setShowMap(!showMap)} icon="map" className="symbol-button" />
-                                        {showMap && latitude && longitude && (
-                                            <MapContainer center={position} zoom={13} style={{ width: '100%', height: '200px' }}>
-                                                <TileLayer
-                                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                                />
-                                                <Marker position={position}>
-                                                    <Popup>
-                                                        <span>Location: {imageDetail.location?.country}, {imageDetail.location?.region}</span>
-                                                    </Popup>
-                                                </Marker>
-                                            </MapContainer>
-                                        )}
-                                    </div> */}
                                     <div className="d-flex align-items-center symbol-details-group">
                                         <SymbolButton onClick={() => setShowMap(!showMap)} icon="map" className="symbol-button" />
                                         {showMap && latitude && longitude && (
                                             <div className="symbols-img-details">
                                                 <span className="symbols-img-details-text">
-                                                    <MapContainer center={position} zoom={10} style={{ width: '10rem', height: '10rem' }}
-                                                        zoomControl={false}
-                                                        attributionControl={false}>
-                                                        <TileLayer
-                                                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                                        />
-                                                        <Marker position={position}>
-                                                            {/* <Popup>
-                                                                <span>Location: {imageDetail.location?.country}, {imageDetail.location?.region}</span>
-                                                            </Popup> */}
-                                                        </Marker>
-                                                    </MapContainer>
+                                                    <Suspense fallback={<div>Loading Map...</div>}>
+                                                        <LazyMapContainer center={position} zoom={10} style={{ width: '10rem', height: '10rem' }}
+                                                            zoomControl={false}
+                                                            attributionControl={false}>
+                                                            <TileLayer
+                                                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                                            />
+                                                            <Marker position={position}>
+                                                            </Marker>
+                                                        </LazyMapContainer>
+                                                    </Suspense>
                                                 </span>
                                                 <div className="symbols-img-details-text map-text">{imageDetail.location?.country}, {imageDetail.location?.region}</div>
                                                 <div className="symbols-img-details-text map-text">{latitude}, {longitude}</div>
