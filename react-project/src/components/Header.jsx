@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -14,6 +14,7 @@ export function Header() {
     const [isDropdownActive, setIsDropdownActive] = useState(false);
     const [countries, setCountries] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleDropdownToggle = () => {
         console.log('Dropdown toggle clicked');
@@ -30,6 +31,11 @@ export function Header() {
         }
     };
 
+    const handleHomeClick = () => {
+        navigate('/');
+    };
+
+
     useEffect(() => {
         const fetchCountries = async () => {
             try {
@@ -42,6 +48,8 @@ export function Header() {
         };
         fetchCountries();
     }, []);
+
+    const isHomePage = location.pathname === '/';
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -63,9 +71,14 @@ export function Header() {
                                 <NavDropdown.Item
                                     key={index} className="menu-country" onClick={() => handleCountryClick(country)}>
                                     {country.title}
+
                                 </NavDropdown.Item>
                             ))}
-
+                            {!isHomePage && (
+                                <NavDropdown.Item className="menu-country" onClick={handleHomeClick}>
+                                    Take me back home
+                                </NavDropdown.Item>
+                            )}
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

@@ -68,6 +68,7 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
   margin-top: 3rem !important;
   --bs-dropdown-link-hover-bg: none !important;
   --bs-dropdown-padding-x: none !important;
+  --bs-dropdown-link-active-bg: #a29320 !important;
 }
 
 .dropdown-item:hover {
