@@ -2,14 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../styles/carousel.css';
 import { getPhotos } from '../api/homeApi';
 
-// const images = [
-//     '/src/img/img1.jpg',
-//     '/src/img/img2.jpg',
-//     '/src/img/img3.jpg',
-//     '/src/img/img4.jpg',
-//     '/src/img/img5.jpg',
-// ];
-
 export function Carousel() {
     const [images, setImages] = useState([]);
     const carouselRef = useRef(null);

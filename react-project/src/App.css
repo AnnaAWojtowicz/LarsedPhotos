@@ -3,6 +3,10 @@
   background-color: white;
 }
 
+body {
+  background-color: white;
+}
+
 .bg-body-tertiary {
   --bs-bg-opacity: 0 !important;
   background-color: none !important;
@@ -10,8 +14,13 @@
 
 .container {
   display: flex;
-  max-width: 100vw;
-  place-items: space-between;
+  /* max-width: 100vw; */
+  max-width: 2000px !important;
+  width: 100%;
+  margin: 0 auto !important;
+  padding: 0 15px;
+  /* place-items: space-between; */
+  justify-content: space-between;
 }
 
 .header-container {
@@ -20,7 +29,6 @@
 }
 
 @media (min-width: 576px) {
-  .container,
   .container-sm {
     max-width: 100vw !important;
   }
