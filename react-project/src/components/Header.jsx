@@ -66,7 +66,11 @@ export function Header() {
                             id="basic-nav-dropdown"
                             onClick={handleDropdownToggle}
                         >
-
+                            {!isHomePage && (
+                                <NavDropdown.Item className="menu-country" onClick={handleHomeClick}>
+                                    Take me back home
+                                </NavDropdown.Item>
+                            )}
                             {countries.map((country, index) => (
                                 <NavDropdown.Item
                                     key={index} className="menu-country" onClick={() => handleCountryClick(country)}>
@@ -74,11 +78,7 @@ export function Header() {
 
                                 </NavDropdown.Item>
                             ))}
-                            {!isHomePage && (
-                                <NavDropdown.Item className="menu-country" onClick={handleHomeClick}>
-                                    Take me back home
-                                </NavDropdown.Item>
-                            )}
+
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
