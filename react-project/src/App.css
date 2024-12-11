@@ -25,7 +25,13 @@ body {
 
 .header-container {
   display: flex;
+
   margin-left: auto;
+  background-color: white;
+}
+
+.nav-link {
+  padding: 0 !important;
 }
 
 @media (min-width: 576px) {
@@ -77,6 +83,41 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
   --bs-dropdown-link-hover-bg: none !important;
   --bs-dropdown-padding-x: none !important;
   --bs-dropdown-link-active-bg: #a29320 !important;
+}
+
+@media (max-width: 800px) {
+  .navbar-dropdown {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background-color: white;
+    overflow: visible !important;
+    max-height: calc(
+      100vh - 50px
+    ); /* Ensure the dropdown does not exceed the viewport height */
+    overflow-y: auto;
+    margin-top: 0 !important;
+    padding-top: 3rem !important;
+  }
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute !important;
 }
 
 .dropdown-item:hover {

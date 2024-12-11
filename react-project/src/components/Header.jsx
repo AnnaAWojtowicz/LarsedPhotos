@@ -54,34 +54,33 @@ export function Header() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <NavDropdown
-                            title={
-                                <span className={`dropdown-toggle ${isDropdownActive ? 'active' : ''}`}>
-                                    Lukas Larsed
-                                </span>
-                            }
-                            id="basic-nav-dropdown"
-                            onClick={handleDropdownToggle}
-                        >
-                            {!isHomePage && (
-                                <NavDropdown.Item className="menu-country" onClick={handleHomeClick}>
-                                    Take me back home
-                                </NavDropdown.Item>
-                            )}
-                            {countries.map((country, index) => (
-                                <NavDropdown.Item
-                                    key={index} className="menu-country" onClick={() => handleCountryClick(country)}>
-                                    {country.title}
 
-                                </NavDropdown.Item>
-                            ))}
+                <Nav className="navbar-dropdown">
+                    <NavDropdown
+                        title={
+                            <span className={`dropdown-toggle ${isDropdownActive ? 'active' : ''}`}>
+                                Lukas Larsed
+                            </span>
+                        }
+                        id="basic-nav-dropdown"
+                        onClick={handleDropdownToggle}
+                    >
+                        {!isHomePage && (
+                            <NavDropdown.Item className="menu-country" onClick={handleHomeClick}>
+                                Take me back home
+                            </NavDropdown.Item>
+                        )}
+                        {countries.map((country, index) => (
+                            <NavDropdown.Item
+                                key={index} className="menu-country" onClick={() => handleCountryClick(country)}>
+                                {country.title}
 
-                        </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
+                            </NavDropdown.Item>
+                        ))}
+
+                    </NavDropdown>
+                </Nav>
+
             </Container>
         </Navbar>
     );
