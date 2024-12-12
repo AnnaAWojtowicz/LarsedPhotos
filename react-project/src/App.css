@@ -32,6 +32,7 @@ body {
 
 .nav-link {
   padding: 0 !important;
+  padding-left: 1rem !important;
 }
 
 @media (min-width: 576px) {
@@ -107,9 +108,7 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
     z-index: 20;
     background-color: white;
     overflow: visible !important;
-    max-height: calc(
-      100vh - 50px
-    ); /* Ensure the dropdown does not exceed the viewport height */
+    max-height: calc(100vh - 50px);
     overflow-y: auto;
     margin-top: 0 !important;
     padding-top: 3rem !important;
