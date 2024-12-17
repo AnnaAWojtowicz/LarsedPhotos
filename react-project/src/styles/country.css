@@ -21,6 +21,7 @@
   font-family: "Orbitron", system-ui;
   text-align: center;
   padding: 0 0.5rem;
+  padding-bottom: 1rem;
   margin: 3rem auto;
   margin-bottom: 5rem;
   font-size: 17vw;
@@ -37,9 +38,18 @@
   align-items: center;
 }
 
+.name-country.tag-title {
+  font-size: 10vw;
+  line-height: 1.2;
+}
+
 @media (max-width: 600px) {
   .name-country {
-    font-size: 15vw; /* Adjust font size for smaller screens */
+    font-size: 15vw;
+  }
+
+  .name-country.tag-title {
+    font-size: 8vw;
   }
 }
 

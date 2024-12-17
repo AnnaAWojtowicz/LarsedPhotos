@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getSpecificCountryAlbum } from '../api/getSpecificCountryAlbum.jsx';
 import "../styles/country.css";
-import img5 from "../img/img5.jpg";
-import mapImg from "../img/mapImg.png";
 import { Header } from "./Header.jsx";
 import { CountryImg } from './CountryImg.jsx';
+import { getSpecificTag } from '../api/getTags.jsx';
 
 
 
@@ -13,61 +12,77 @@ function SpecificCountryAlbum() {
     const { id } = useParams();
     const location = useLocation();
     const { album, countryName } = location.state || {};
+    const navigate = useNavigate();
 
     const [albumData, setAlbumData] = useState(album);
-    const [currentCountryName, setCurrentCountryName] = useState(countryName);
+    const [currentCountryName, setCurrentCountryName] = useState(countryName || id);
+    const [tagData, setTagData] = useState({ results: [] });
+    const [chosenTag, setChosenTag] = useState("");
+    const [loading, setLoading] = useState(false);
+
+
+    const fetchImages = async (tag) => {
+        try {
+            setLoading(true);
+            let data;
+            if (tag) {
+                data = await getSpecificTag(tag);
+                setTagData(data);
+                setCurrentCountryName(tag);
+            } else {
+                data = await getSpecificCountryAlbum(id);
+                setAlbumData(data);
+                setCurrentCountryName(countryName || id);
+            }
+        } catch (error) {
+            console.error('Error fetching images:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
+        fetchImages(chosenTag);
+    }, [id, chosenTag]);
 
-        const fetchAlbum = async () => {
-            try {
-                const data = await getSpecificCountryAlbum(id);
-                setAlbumData(data);
-                setCurrentCountryName(data.countryName || countryName);
-            } catch (error) {
-                console.error('Error fetching specific country album:', error);
-            }
-        };
 
-        if (!albumData || albumData.countryId !== id) {
-            fetchAlbum();
-        }
-    }, [id]);
+    const handleCountrySelect = (countryName) => {
+        setChosenTag("");
+        setCurrentCountryName(countryName);
+        navigate(`/country/${countryName}`);
+    };
 
-    if (!albumData) {
+    if (loading) {
         return <div>Loading...</div>;
     }
 
-    // specific image to present the country
 
-    const specificImage = albumData.results[0];
-    const landscapeName = countryName === "Landscapes" ? "Land-<br />scapes" : countryName;
+    const imagesToShow = chosenTag ? tagData.results : albumData.results;
+    const landscapeName = chosenTag ? `#${chosenTag}` : currentCountryName;
 
     return (
         <>
             <div className="container-country">
-                <div className='row'>
-                    <div className='col-12 d-flex justify-content-end header-country'><Header /></div>
-                    <div className='col-12 golden-line'></div>
-                    {/* <div className='col-9'>
-                        <img src={specificImage.url2048} className="big-photo-country" alt={specificImage.title} />
-                    </div> */}
-                    <div className='col-9'>
-                        <div className="name-country" title={countryName}>
+                <div className="row">
+                    <div className="col-12 d-flex justify-content-end header-country">
+                        <Header onCountrySelect={handleCountrySelect} />
+                    </div>
+                    <div className="col-12 golden-line"></div>
+                    <div className="col-9">
+                        <div className={`name-country ${chosenTag ? 'tag-title' : ''}`} title={landscapeName}>
                             {landscapeName === "Land-<br />scapes" ? (
                                 <>
                                     Land-<br />scapes
                                 </>
                             ) : (
-                                countryName
+                                landscapeName
                             )}
                         </div>
-                        {/* <div className="text-country" description="sth">Canada is a country in the northern part of North America. Its ten provinces and three territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres, making it the world's second-largest country by total area. Its southern and western border with the United States, stretching 8,891 kilometres (5,525 mi), is the world's longest bi-national land border. Canada's capital is Ottawa, and its three largest metropolitan areas are Toronto, Montreal, and Vancouver.</div> */}
                     </div>
 
-                    <div className='col-12 golden-line'></div>
-                    <div className='col-12'>
-                        {albumData.results.map((photo) => (
+                    <div className="col-12 golden-line"></div>
+                    <div className="col-12">
+                        {(chosenTag ? tagData.results : albumData.results).map((photo) => (
                             <CountryImg
                                 key={photo.id}
                                 imgId={photo.id}
@@ -75,13 +90,14 @@ function SpecificCountryAlbum() {
                                 descriptionImg={photo.title}
                                 camera={photo.camera ? photo.camera.fullName : "Unknown Camera"}
                                 tag={photo.tags}
+                                onTagClick={setChosenTag}
                             />
                         ))}
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default SpecificCountryAlbum;

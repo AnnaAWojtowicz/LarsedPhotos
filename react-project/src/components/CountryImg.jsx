@@ -5,14 +5,16 @@ import { getSpecificImgDetails } from '../api/getSpecificImgDetails';
 import 'leaflet/dist/leaflet.css';
 const LazyMapContainer = React.lazy(() => import('react-leaflet').then(module => ({ default: module.MapContainer })));
 import { TileLayer, Marker } from 'react-leaflet';
+import { getSpecificTag } from '../api/getTags';
 
 
 
-export function CountryImg({ imgId, img, descriptionImg }) {
+export function CountryImg({ imgId, img, descriptionImg, tags, onTagClick }) {
     const [imgDetails, setImgDetails] = useState([]);
     const [showCamera, setShowCamera] = useState(false);
     const [showMap, setShowMap] = useState(false);
     const [showTag, setShowTag] = useState(false);
+
 
     useEffect(() => {
         const fetchImgDetails = async () => {
@@ -31,6 +33,10 @@ export function CountryImg({ imgId, img, descriptionImg }) {
 
         fetchImgDetails();
     }, [imgId]);
+
+    const handleTagClick = (tag) => {
+        onTagClick(tag);
+    };
 
 
     function showInNewWindow() {
@@ -106,7 +112,7 @@ export function CountryImg({ imgId, img, descriptionImg }) {
                                         {showTag && imageDetail?.tags?.length > 0 && (
                                             <div className="symbols-img-details-text">
                                                 {imageDetail.tags.map((tag, tagIndex) => (
-                                                    <span key={tagIndex} className="tag-item">#{tag} </span>
+                                                    <span key={tagIndex} className="tag-item" onClick={() => handleTagClick(tag)}>#{tag} </span>
                                                 ))}
                                             </div>
                                         )}

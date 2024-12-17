@@ -1,22 +1,29 @@
 
 import './App.css'
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { Home } from './components/Home.jsx'
 import SpecificCountryAlbum from './components/SpecificCountryAlbum.jsx'
 
 
 
-function App() {
+function AppWrapper() {
+  const location = useLocation();
 
   return (
-    <Router future={{ v7_startTransition: true }}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/country/:id" element={<SpecificCountryAlbum />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/country/:id" element={<SpecificCountryAlbum key={location.key} />} />
+    </Routes>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppWrapper />
     </Router>
   );
 }
 
-export default App
+export default App;
