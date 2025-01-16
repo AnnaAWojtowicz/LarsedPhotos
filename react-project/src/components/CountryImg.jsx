@@ -59,6 +59,7 @@ export function CountryImg({ imgId, img, descriptionImg, tags, onTagClick }) {
                                     className="big-photo-country"
                                     alt={descriptionImg}
                                     onClick={showInNewWindow}
+                                    loading="lazy"
                                 />
                             </div>
                             <div className='col-3 d-flex flex-column justify-content-center'>
