@@ -3,15 +3,6 @@
   background-color: white;
 }
 
-body {
-  /* background-color: white; */
-}
-
-/* .row {
-  border-left: #a29320 1px solid;
-  border-right: #a29320 1px solid;
-} */
-
 .bg-body-tertiary {
   --bs-bg-opacity: 0 !important;
   background-color: none !important;
