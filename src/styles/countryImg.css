@@ -2,6 +2,11 @@
   margin: 0 0 8rem 1rem;
 }
 
+.country-img {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .symbols-country-img-container {
   font-family: "Material Symbols Outlined";
   display: flex;
