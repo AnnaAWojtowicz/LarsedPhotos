@@ -43,6 +43,14 @@
   line-height: 1.2;
 }
 
+.landscape-break {
+  display: inline-block;
+}
+
+.landscape-break span {
+  display: block;
+}
+
 @media (max-width: 600px) {
   .name-country {
     font-size: 15vw;

@@ -70,10 +70,10 @@ function SpecificCountryAlbum() {
                     <div className="col-12 golden-line"></div>
                     <div className="col-9">
                         <div className={`name-country ${chosenTag ? 'tag-title' : ''}`} title={landscapeName}>
-                            {landscapeName === "Land-<br />scapes" ? (
-                                <>
-                                    Land-<br />scapes
-                                </>
+                            {landscapeName === "Landscapes" ? (
+                                <span className="landscape-break">
+                                    Land-<span>scapes</span>
+                                </span>
                             ) : (
                                 landscapeName
                             )}
