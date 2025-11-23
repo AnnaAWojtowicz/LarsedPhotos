@@ -86,7 +86,7 @@ function SpecificCountryAlbum() {
                             <CountryImg
                                 key={photo.id}
                                 imgId={photo.id}
-                                img={photo.url800}
+                                img={photo.url2048}
                                 descriptionImg={photo.title}
                                 camera={photo.camera ? photo.camera.fullName : "Unknown Camera"}
                                 tag={photo.tags}
