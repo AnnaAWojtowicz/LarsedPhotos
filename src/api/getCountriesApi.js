@@ -1,14 +1,9 @@
-let countries = "https://fn-flex-flickr-pelsedyr-prod.azurewebsites.net/api/Albums?randomOrder=false";
+import { API_ENDPOINTS, getAuthHeaders } from './config.js';
 
 export async function getCountriesApi() {
-
-    const API_KEY = import.meta.env.VITE_API_KEY;
-
     try {
-        const response = await fetch(countries, {
-            headers: {
-                'x-function-key': API_KEY
-            }
+        const response = await fetch(API_ENDPOINTS.ALBUMS, {
+            headers: getAuthHeaders()
         });
 
         if (!response.ok) {
