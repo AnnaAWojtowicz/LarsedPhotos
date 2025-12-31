@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import '../styles/carousel.css';
 import { getPhotos } from '../api/homeApi';
 
@@ -39,6 +40,13 @@ function LazyImage({ photoData }) {
         />
     );
 }
+
+LazyImage.propTypes = {
+    photoData: PropTypes.shape({
+        url800: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export function Carousel() {
     const [allPhotos, setAllPhotos] = useState([]);
