@@ -64,7 +64,6 @@ export function Carousel() {
             setIsLoading(true);
             try {
                 const data = await getPhotos();
-                console.log(`Fetched total: ${data.results.length} images`);
                 setAllPhotos(data.results);
                 // Show initial batch
                 setDisplayedPhotos(data.results.slice(0, IMAGES_PER_BATCH));
