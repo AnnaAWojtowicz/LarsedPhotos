@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getSpecificCountryAlbum } from '../api/getSpecificCountryAlbum.jsx';
 import "../styles/country.css";
@@ -11,7 +11,7 @@ import { getSpecificTag } from '../api/getTags.jsx';
 function SpecificCountryAlbum() {
     const { id } = useParams();
     const location = useLocation();
-    const { album, countryName } = location.state || {};
+    const { countryName } = location.state || {};
     const navigate = useNavigate();
 
     const [allAlbumData, setAllAlbumData] = useState([]);
@@ -96,10 +96,9 @@ function SpecificCountryAlbum() {
     const landscapeName = chosenTag ? `#${chosenTag}` : currentCountryName;
 
     return (
-        <>
-            <div className="container-country">
-                <div className="row">
-                    <div className="col-12 d-flex justify-content-end header-country">
+        <div className="container-country">
+            <div className="row">
+                <div className="col-12 d-flex justify-content-end header-country">
                         <Header onCountrySelect={handleCountrySelect} />
                     </div>
                     <div className="col-12 golden-line"></div>
@@ -132,9 +131,8 @@ function SpecificCountryAlbum() {
                             <div className="loading">{allPhotos.length - displayedPhotos.length} more images available</div>
                         )}
                     </div>
-                </div>
             </div>
-        </>
+        </div>
     );
 }
 
