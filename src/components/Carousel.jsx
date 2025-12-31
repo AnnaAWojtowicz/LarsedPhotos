@@ -58,12 +58,12 @@ export function Carousel() {
     const IMAGES_PER_BATCH = 2;
     const SCROLL_THROTTLE_MS = 500;
 
-    // Fetch all images once on mount
+    // Fetch all images from api
     useEffect(() => {
         const fetchAllImages = async () => {
             setIsLoading(true);
             try {
-                const data = await getPhotos(1, 500);
+                const data = await getPhotos();
                 console.log(`Fetched total: ${data.results.length} images`);
                 setAllPhotos(data.results);
                 // Show initial batch
@@ -77,7 +77,7 @@ export function Carousel() {
         fetchAllImages();
     }, []);
 
-    // Infinite scroll handler with throttling
+    // Lazy scrolling with throttling
     useEffect(() => {
         const carousel = carouselRef.current;
         if (!carousel) return;

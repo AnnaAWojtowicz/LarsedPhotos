@@ -1,11 +1,10 @@
 const home = "https://fn-flex-flickr-pelsedyr-prod.azurewebsites.net/api/AllPhotos?randomOrder=true";
 
-export async function getPhotos(page = 1, perpage = 30) {
+export async function getPhotos() {
     const API_KEY = import.meta.env.VITE_API_KEY;
-    const url = `${home}&page=${page}&perpage=${perpage}`;
 
     try {
-        const response = await fetch(url, {
+        const response = await fetch(home, {
             headers: {
                 'x-function-key': API_KEY
             }
