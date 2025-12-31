@@ -1,11 +1,11 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import "../styles/countryImg.css";
 import { SymbolButton } from './SymbolButton';
-import { getSpecificImgDetails } from '../api/getSpecificImgDetails';
+import { getSpecificImgDetails } from '../api/getSpecificImgDetails.js';
 import 'leaflet/dist/leaflet.css';
 const LazyMapContainer = React.lazy(() => import('react-leaflet').then(module => ({ default: module.MapContainer })));
 import { TileLayer, Marker } from 'react-leaflet';
-import { getSpecificTag } from '../api/getTags';
+import { getSpecificTag } from '../api/getTags.js';
 
 
 

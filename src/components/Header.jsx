@@ -6,8 +6,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "../App.css";
-import { getCountriesApi } from '../api/getCountriesApi';
-import { getSpecificCountryAlbum } from '../api/getSpecificCountryAlbum';
+import { getCountriesApi } from '../api/getCountriesApi.js';
+import { getSpecificCountryAlbum } from '../api/getSpecificCountryAlbum.js';
 
 export function Header() {
 

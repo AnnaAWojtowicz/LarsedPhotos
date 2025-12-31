@@ -3,7 +3,7 @@ import "../styles/countryImg.css";
 import img5 from "../img/img5.jpg";
 import mapImg from "../img/mapImg.png";
 import { SymbolButton } from './SymbolButton';
-import { getSpecificImgDetails } from '../api/getSpecificImgDetails';
+import { getSpecificImgDetails } from '../api/getSpecificImgDetails.js';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 
 

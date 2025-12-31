@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/carousel.css';
-import { getPhotos } from '../api/homeApi';
+import { getPhotos } from '../api/homeApi.js';
 
 function LazyImage({ photoData }) {
     const [imageSrc, setImageSrc] = useState(null);
