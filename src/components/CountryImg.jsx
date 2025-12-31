@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useState, Suspense, useRef } from 'react';
 import "../styles/countryImg.css";
 import { SymbolButton } from './SymbolButton';
 import { getSpecificImgDetails } from '../api/getSpecificImgDetails.js';
@@ -14,25 +14,48 @@ export function CountryImg({ imgId, img, descriptionImg, tags, onTagClick }) {
     const [showCamera, setShowCamera] = useState(false);
     const [showMap, setShowMap] = useState(false);
     const [showTag, setShowTag] = useState(false);
+    const [dataFetched, setDataFetched] = useState(false);
+    const imgRef = useRef(null);
 
 
     useEffect(() => {
-        const fetchImgDetails = async () => {
-            try {
-                const data = await getSpecificImgDetails(imgId);
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !dataFetched) {
+                        const fetchImgDetails = async () => {
+                            try {
+                                const data = await getSpecificImgDetails(imgId);
 
-                if (data.results && data.results.length > 0) {
-                    setImgDetails(data.results);
-                } else {
-                    console.error('No results found');
-                }
-            } catch (error) {
-                console.error('Error fetching specific image details:', error);
+                                if (data.results && data.results.length > 0) {
+                                    setImgDetails(data.results);
+                                    setDataFetched(true);
+                                } else {
+                                    console.error('No results found');
+                                }
+                            } catch (error) {
+                                console.error('Error fetching specific image details:', error);
+                            }
+                        };
+
+                        fetchImgDetails();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { rootMargin: '200px' }
+        );
+
+        if (imgRef.current) {
+            observer.observe(imgRef.current);
+        }
+
+        return () => {
+            if (imgRef.current) {
+                observer.unobserve(imgRef.current);
             }
         };
-
-        fetchImgDetails();
-    }, [imgId]);
+    }, [imgId, dataFetched]);
 
     const handleTagClick = (tag) => {
         onTagClick(tag);
@@ -44,7 +67,7 @@ export function CountryImg({ imgId, img, descriptionImg, tags, onTagClick }) {
     }
 
     return (
-        <div className="country-img">
+        <div className="country-img" ref={imgRef}>
             {imgDetails.length > 0 ? (
                 imgDetails.map((imageDetail, index) => {
                     const latitude = imageDetail?.location?.latitude;
