@@ -10,7 +10,7 @@ export function Carousel() {
         const fetchImages = async () => {
             try {
                 const data = await getPhotos();
-                setImages(data.results.map(photo => photo.url640));
+                setImages(data.results.map(photo => photo.url800));
             } catch (error) {
                 console.error('Error fetching images:', error);
             }
@@ -19,24 +19,7 @@ export function Carousel() {
     }, []);
 
 
-    useEffect(() => {
-        const carousel = carouselRef.current;
-        let scrollAmount = 0;
 
-        const scrollStep = () => {
-            if (carousel.scrollTop >= carousel.scrollHeight - carousel.clientHeight) {
-                carousel.scrollTop = 0;
-                scrollAmount = 0;
-            } else {
-                scrollAmount += 1;
-                carousel.scrollTop = scrollAmount;
-            }
-        };
-
-        const intervalId = setInterval(scrollStep, 20);
-
-        return () => clearInterval(intervalId);
-    }, [images]);
 
     return (
         <div className="carousel" ref={carouselRef}>
