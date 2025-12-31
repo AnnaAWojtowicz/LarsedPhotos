@@ -1,15 +1,9 @@
+import { API_ENDPOINTS, getAuthHeaders } from './config.js';
 
-
-let getSpecificImgDetails = async (imgId) => {
-
-    const API_KEY = import.meta.env.VITE_API_KEY;
-    let specificImgDetailsUrl = `https://fn-flex-flickr-pelsedyr-prod.azurewebsites.net/api/Exif/${imgId}`;
-
+const getSpecificImgDetails = async (imgId) => {
     try {
-        const response = await fetch(specificImgDetailsUrl, {
-            headers: {
-                'x-function-key': API_KEY
-            }
+        const response = await fetch(API_ENDPOINTS.EXIF(imgId), {
+            headers: getAuthHeaders()
         });
 
         if (!response.ok) {

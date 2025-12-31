@@ -1,13 +1,9 @@
-let getSpecificTag = async (chosenTag) => {
+import { API_ENDPOINTS, getAuthHeaders } from './config.js';
 
-    const API_KEY = import.meta.env.VITE_API_KEY;
-    let specificTagUrl = `https://fn-flex-flickr-pelsedyr-prod.azurewebsites.net/api/Search/${chosenTag}?randomOrder=false`;
-
+const getSpecificTag = async (chosenTag) => {
     try {
-        const response = await fetch(specificTagUrl, {
-            headers: {
-                'x-function-key': API_KEY
-            }
+        const response = await fetch(API_ENDPOINTS.SEARCH(chosenTag), {
+            headers: getAuthHeaders()
         });
 
         if (!response.ok) {
