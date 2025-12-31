@@ -11,15 +11,19 @@ import { getSpecificCountryAlbum } from '../api/getSpecificCountryAlbum.js';
 
 export function Header() {
 
-    const [isDropdownActive, setIsDropdownActive] = useState(false);
     const [countries, setCountries] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
 
+    const isHomePage = location.pathname === '/';
+    const [isDropdownActive, setIsDropdownActive] = useState(isHomePage);
+
+    useEffect(() => {
+        setIsDropdownActive(isHomePage);
+    }, [isHomePage]);
+
     const handleDropdownToggle = () => {
-        console.log('Dropdown toggle clicked');
         setIsDropdownActive(!isDropdownActive);
-        console.log('isDropdownActive:', !isDropdownActive);
     };
 
     const handleCountryClick = async (country) => {
@@ -49,8 +53,6 @@ export function Header() {
         fetchCountries();
     }, []);
 
-    const isHomePage = location.pathname === '/';
-
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
@@ -63,6 +65,7 @@ export function Header() {
                             </span>
                         }
                         id="basic-nav-dropdown"
+                        show={isDropdownActive}
                         onClick={handleDropdownToggle}
                     >
                         {!isHomePage && (
