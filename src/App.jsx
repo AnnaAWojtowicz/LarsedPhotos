@@ -1,10 +1,8 @@
-
 import './App.css'
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { Home } from './components/Home.jsx'
 import SpecificCountryAlbum from './components/SpecificCountryAlbum.jsx'
-
 
 
 function AppWrapper() {
