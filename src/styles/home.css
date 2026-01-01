@@ -34,7 +34,7 @@
   align-items: flex-start;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .left-section {
     width: 100vw;
   }
@@ -46,4 +46,4 @@
   .carousel {
     width: 100vw;
   }
-}
+} */

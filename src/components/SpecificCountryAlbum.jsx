@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getSpecificCountryAlbum } from '../api/getSpecificCountryAlbum.js';
 import "../styles/country.css";
-import { Header } from "./Header.jsx";
+// import { Header } from "./Header.jsx";
 import { CountryImg } from './CountryImg.jsx';
 import { getSpecificTag } from '../api/getTags.js';
 

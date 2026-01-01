@@ -25,9 +25,7 @@ function LazyImage({ photoData }) {
         }
 
         return () => {
-            if (imgRef.current) {
-                observer.unobserve(imgRef.current);
-            }
+            observer.disconnect();
         };
     }, [photoData.url800]);
 
@@ -76,7 +74,7 @@ export function Carousel() {
         fetchAllImages();
     }, []);
 
-    // Lazy scrolling with throttling
+    // Lazy scrolling with throttling - use window scroll
     useEffect(() => {
         const carousel = carouselRef.current;
         if (!carousel) return;
@@ -89,7 +87,13 @@ export function Carousel() {
                 return;
             }
             
-            if (carousel.scrollTop + carousel.clientHeight >= carousel.scrollHeight - 200) {
+            // Get carousel position relative to viewport
+            const carouselRect = carousel.getBoundingClientRect();
+            const carouselBottom = carouselRect.bottom;
+            const viewportHeight = window.innerHeight;
+            
+            // Load more if carousel bottom is near viewport bottom
+            if (carouselBottom - viewportHeight < 200) {
                 lastScrollTimeRef.current = now;
                 
                 // Load more images if available
@@ -103,8 +107,8 @@ export function Carousel() {
             }
         };
 
-        carousel.addEventListener('scroll', handleScroll);
-        return () => carousel.removeEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [allPhotos]);
 
     return (
