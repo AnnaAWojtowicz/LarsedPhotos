@@ -5,9 +5,9 @@
 
 .carousel-image {
   height: auto;
-  width: 30%;
+  width: 70%;
   object-fit: contain;
-  margin-left: 3%;
+  margin-left: 7%;
   margin-bottom: 10px;
 }
 
