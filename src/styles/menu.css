@@ -1,0 +1,14 @@
+.my-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: violet;
+
+}
+
+.my-menu li {
+    list-style: none;
+    font-family: "Quicksand", system-ui;
+    font-size: 1.5rem;
+    padding: 5px;
+}
