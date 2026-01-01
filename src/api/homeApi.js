@@ -1,13 +1,9 @@
-const home = "https://fn-flex-flickr-pelsedyr-prod.azurewebsites.net/api/AllPhotos?randomOrder=true";
+import { API_ENDPOINTS, getAuthHeaders } from './config.js';
 
 export async function getPhotos() {
-    const API_KEY = import.meta.env.VITE_API_KEY;
-
     try {
-        const response = await fetch(home, {
-            headers: {
-                'x-function-key': API_KEY
-            }
+        const response = await fetch(API_ENDPOINTS.ALL_PHOTOS, {
+            headers: getAuthHeaders()
         });
 
         if (!response.ok) {
