@@ -12,3 +12,8 @@
     font-size: 1.5rem;
     padding: 5px;
 }
+
+.my-menu h2 {
+    font-family: "Orbitron", system-ui;
+    font-size: 2rem;
+}

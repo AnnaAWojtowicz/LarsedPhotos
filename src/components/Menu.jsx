@@ -22,10 +22,11 @@ export function Menu() {
 
     return (
         <nav className="my-menu">
+            <h2>My Menu Title</h2>
             <ul>
                 {countries.length === 0 ? (
                     <li>Loading...</li>) : (
-                    countries.map((c, index) => (
+                    countries.map((c) => (
                         <li key={c.id}>{c.title}</li>
                     ))
                 )}
