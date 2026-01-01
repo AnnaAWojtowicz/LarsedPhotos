@@ -5,7 +5,10 @@ import { Carousel } from "./Carousel.jsx";
 
 export function Home() {
     return (
-        <Carousel className="carousel" />
+        <>
+            <div className="decor"></div>
+            {/* <Carousel className="carousel" /> */}
+        </>
 
         // <div className="container">
         //     <div className="left-section">

@@ -7,20 +7,25 @@
 }
 
 .decor {
-  flex: 0.5;
-  position: relative;
-}
 
-.decor::before {
-  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
   left: 10%;
   width: 1px;
   background-color: #a29320;
-  transform: translateX(-50%);
 }
+
+/* .decor::before { */
+/* content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  width: 1px;
+  background-color: #a29320;
+  transform: translateX(-50%); */
+/* } */
 
 .carousel {
   flex: 6.5;
