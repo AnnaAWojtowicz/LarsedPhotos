@@ -7,3 +7,5 @@ remember that tags is an array - need to map it!
 styling issue - birder line when clicked on symbol:
 
 - in general it should be invisible, first when clicked on symnol, details and golden border on the right should show - remeber to fix it!
+
+.
