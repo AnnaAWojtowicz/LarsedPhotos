@@ -47,9 +47,12 @@
 
 .menu-container li {
     list-style: none;
+    padding: 7px;
+}
+
+.dropdown-menu a {
     font-family: "Quicksand", system-ui;
     font-size: 1.5rem;
-    padding: 7px;
 }
 
 .dropdown-menu.toggle {

@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getSpecificCountryAlbum } from '../api/getSpecificCountryAlbum.js';
 import "../styles/country.css";
-// import { Header } from "./Header.jsx";
+import { Menu } from './Menu.jsx';
 import { CountryImg } from './CountryImg.jsx';
 import { getSpecificTag } from '../api/getTags.js';
 
@@ -99,7 +99,7 @@ function SpecificCountryAlbum() {
         <div className="container-country">
             <div className="row">
                 <div className="col-12 d-flex justify-content-end header-country">
-                        <Header onCountrySelect={handleCountrySelect} />
+                        <Menu />
                     </div>
                     <div className="col-12 golden-line"></div>
                     <div className="col-9">

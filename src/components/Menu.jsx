@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getCountriesApi } from '../api/getCountriesApi.js';
 import "../styles/menu.css";
+import { Link } from 'react-router-dom';
+
 
 export function Menu() {
 
@@ -22,20 +24,6 @@ export function Menu() {
 
 
     return (
-        // <nav className="menu-container">
-        //     <a href="#" onClick={() => setIsOpen(!isOpen)}>
-        //         <span className={`menu-header ${isOpen ? 'active' : ''}`}>Lukas Larsed</span>
-        //     </a>
-        //     <ul className='dropdown-menu'>
-        //         {countries.length === 0 ? (
-        //             <li>Loading...</li>) : (
-        //             countries.map((c) => (
-        //                 <li key={c.id}>{c.title}</li>
-        //             ))
-        //         )}
-        //     </ul>
-        // </nav >
-
         <nav className="menu-container">
             <a href="#" onClick={() => setIsOpen(!isOpen)}>
                 <span className={`menu-header ${isOpen ? 'toggle' : ''}`}>Lukas Larsed</span>
@@ -44,7 +32,9 @@ export function Menu() {
                 {countries.length === 0 ? (
                     <li>Loading...</li>) : (
                         countries.map((c) => (
-                            <li key={c.id}>{c.title}</li>
+                            <li key={c.id}>
+                                <Link to={`/country/${c.id}`}>{c.title}</Link>
+                            </li>
                         ))
                 )}
             </ul>
