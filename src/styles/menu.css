@@ -2,8 +2,6 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background-color: violet;
-
 }
 
 .my-menu li {
@@ -13,7 +11,23 @@
     padding: 5px;
 }
 
-.my-menu h2 {
+.my-menu a {
     font-family: "Orbitron", system-ui;
     font-size: 2rem;
+    text-decoration: none;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    font-family: "Material Symbols Outlined", sans-serif;
+    content: "\eac3";
+    vertical-align: middle;
+    border-left: 0.1em solid transparent;
+    color: #a29320;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.dropdown-toggle.active::after {
+    transform: rotate(-135deg);
 }

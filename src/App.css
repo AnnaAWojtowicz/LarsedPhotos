@@ -31,7 +31,7 @@
   }
 }
 
-#basic-nav-dropdown {
+/* #basic-nav-dropdown {
   font-family: "Orbitron", system-ui;
   font-size: 2rem;
 }
@@ -43,26 +43,8 @@
 
 a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
   display: none !important;
-}
+} */
 
-.dropdown-toggle::after {
-  font-family: "Material Symbols Outlined" !important;
-  content: "\eac3" !important;
-  font-weight: normal;
-  font-size: 2rem;
-  vertical-align: middle !important;
-  margin-left: 0 !important;
-  border-top: 0 !important;
-  border-left: 0.1em solid transparent !important;
-  border-right: 0 !important;
-  color: #a29320;
-  transform: rotate(-45deg);
-  transition: transform 0.3s ease;
-}
-
-#basic-nav-dropdown .dropdown-toggle.active::after {
-  transform: rotate(-135deg) !important;
-}
 
 .dropdown-menu {
   border: none !important;
@@ -76,7 +58,7 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
   --bs-dropdown-link-active-bg: #a29320 !important;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .navbar-dropdown {
     display: flex;
     position: fixed;
@@ -103,7 +85,7 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
     margin-top: 0 !important;
     padding-top: 3rem !important;
   }
-}
+} */
 
 .navbar-nav .dropdown-menu {
   position: absolute !important;

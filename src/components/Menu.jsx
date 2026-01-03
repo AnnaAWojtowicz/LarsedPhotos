@@ -5,6 +5,7 @@ import "../styles/menu.css";
 export function Menu() {
 
     const [countries, setCountries] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     // Fetch albums with countries
     useEffect(() => {
@@ -22,7 +23,9 @@ export function Menu() {
 
     return (
         <nav className="my-menu">
-            <h2>My Menu Title</h2>
+            <a href="#" onClick={() => setIsOpen(!isOpen)}>
+                <span className={`dropdown-toggle ${isOpen ? 'active' : ''}`}>Lukas Larsed</span>
+            </a>
             <ul>
                 {countries.length === 0 ? (
                     <li>Loading...</li>) : (
