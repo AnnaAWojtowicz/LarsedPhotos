@@ -22,16 +22,30 @@ export function Menu() {
 
 
     return (
-        <nav className="my-menu">
+        // <nav className="menu-container">
+        //     <a href="#" onClick={() => setIsOpen(!isOpen)}>
+        //         <span className={`menu-header ${isOpen ? 'active' : ''}`}>Lukas Larsed</span>
+        //     </a>
+        //     <ul className='dropdown-menu'>
+        //         {countries.length === 0 ? (
+        //             <li>Loading...</li>) : (
+        //             countries.map((c) => (
+        //                 <li key={c.id}>{c.title}</li>
+        //             ))
+        //         )}
+        //     </ul>
+        // </nav >
+
+        <nav className="menu-container">
             <a href="#" onClick={() => setIsOpen(!isOpen)}>
-                <span className={`dropdown-toggle ${isOpen ? 'active' : ''}`}>Lukas Larsed</span>
+                <span className={`menu-header ${isOpen ? 'toggle' : ''}`}>Lukas Larsed</span>
             </a>
-            <ul>
+            <ul className={`dropdown-menu ${isOpen ? 'toggle' : ''}`}>
                 {countries.length === 0 ? (
                     <li>Loading...</li>) : (
-                    countries.map((c) => (
-                        <li key={c.id}>{c.title}</li>
-                    ))
+                        countries.map((c) => (
+                            <li key={c.id}>{c.title}</li>
+                        ))
                 )}
             </ul>
         </nav >

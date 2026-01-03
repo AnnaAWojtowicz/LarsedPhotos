@@ -46,17 +46,7 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
 } */
 
 
-.dropdown-menu {
-  border: none !important;
-  border-right: 1px solid #a29320 !important;
-  --bs-dropdown-border-radius: none !important;
-  --bs-dropdown-min-width: 18rem !important;
-  text-align: end !important;
-  margin-top: 3rem !important;
-  --bs-dropdown-link-hover-bg: none !important;
-  --bs-dropdown-padding-x: none !important;
-  --bs-dropdown-link-active-bg: #a29320 !important;
-}
+
 
 /* @media (max-width: 800px) {
   .navbar-dropdown {

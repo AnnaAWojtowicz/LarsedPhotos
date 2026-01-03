@@ -1,23 +1,22 @@
-.my-menu {
+/* Menu nav container */
+
+.menu-container {
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
-.my-menu li {
-    list-style: none;
-    font-family: "Quicksand", system-ui;
-    font-size: 1.5rem;
-    padding: 5px;
-}
 
-.my-menu a {
+/* Menu header */
+
+.menu-container a {
     font-family: "Orbitron", system-ui;
     font-size: 2rem;
     text-decoration: none;
+    color: inherit;
 }
 
-.dropdown-toggle::after {
+.menu-header::after {
     display: inline-block;
     font-family: "Material Symbols Outlined", sans-serif;
     content: "\eac3";
@@ -25,9 +24,36 @@
     border-left: 0.1em solid transparent;
     color: #a29320;
     transform: rotate(-45deg);
-    transition: transform 0.3s ease-in-out;
 }
 
-.dropdown-toggle.active::after {
+.menu-header.toggle::after {
     transform: rotate(-135deg);
+    transition: transform 0.3s ease-in-out;
+
+}
+
+
+/* Menu items */
+
+.dropdown-menu {
+    position: absolute;
+    border-right: 1px solid #a29320;
+    text-align: end;
+    right: 30px;
+    transform: translateY(0);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-container li {
+    list-style: none;
+    font-family: "Quicksand", system-ui;
+    font-size: 1.5rem;
+    padding: 7px;
+}
+
+.dropdown-menu.toggle {
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
 }
