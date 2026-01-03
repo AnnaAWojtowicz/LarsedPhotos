@@ -9,7 +9,8 @@
       "url": "http://localhost:5173",
       "webRoot": "${workspaceFolder}/src",
       "skipFiles": ["<node_internals>/**"],
-      "preLaunchTask": "npm: dev"
+      "preLaunchTask": "npm: dev",
+      "postDebugTask": "kill npm: dev"
     }
   ]
 }

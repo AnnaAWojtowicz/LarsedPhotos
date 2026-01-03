@@ -21,6 +21,12 @@
           "endsPattern": "(Local|Network):.*http://localhost:\\d+"
         }
       }
+    },
+    {
+      "label": "kill npm: dev",
+      "type": "shell",
+      "command": "pkill",
+      "args": ["-f", "npm run dev"]
     }
   ]
 }
