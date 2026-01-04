@@ -9,7 +9,6 @@ export function Home() {
         <div className="container">
             <div className="decor"></div>
             <Carousel />
-            {/* <Header className="header" /> */}
             <Menu />
         </div>
     );
