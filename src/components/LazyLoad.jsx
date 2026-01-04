@@ -1,23 +1,13 @@
 import { useState, useEffect } from 'react';
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-lazy-load-image-component/src/effects/black-and-white.css";
 import { getPhotos } from '../api/homeApi.js';
+import { svgPlaceholder } from '../constants/placeholders.js';
 
 export function LazyLoad() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [allPhotos, setAllPhotos] = useState([]);
-
-    const svgPlaceholder = 
-        `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
-    <rect width="100%" height="100%" fill="#f0f0f0" />
-    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ccc">
-      Loading...
-    </text>
-  </svg>
-`)}`;
-
-
 
     useEffect(() => {
         const fetchAllImages = async () => {
@@ -44,8 +34,8 @@ export function LazyLoad() {
                     width={photo.dimension800.width} 
                     height={photo.dimension800.height}
                     alt={photo.title || `Photo ${index}`}
-                    effect="blur"
                     threshold = {1}
+                    effect='black-and-white'
                     placeholderSrc={svgPlaceholder}
                 />
             ))}
