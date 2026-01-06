@@ -31,7 +31,7 @@ export function LazyLoad() {
 
         const targetRowWidth = window.innerWidth * 0.7;
         const baseHeight = 300;
-        const gap = 0;
+        const gap = 3; // This much match the gap in the .lazy-row class
 
         const calculatedRows = [];
         let currentRow = [];
@@ -84,7 +84,8 @@ export function LazyLoad() {
                 // Calculate total and adjust last image to fill exactly
                 const totalWidth = widths.reduce((sum, w) => sum + w, 0);
                 const targetWidth = window.innerWidth * 0.7;
-                const difference = targetWidth - totalWidth;
+                const totalGap = (row.photos.length - 1) * 3; // Account for CSS gaps
+                const difference = targetWidth - totalWidth - totalGap;
                 
                 if (widths.length > 0) {
                     widths[widths.length - 1] += difference;
