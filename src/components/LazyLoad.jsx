@@ -7,7 +7,7 @@ import '../styles/lazyload.css'
 
 export function LazyLoad() {
 
-    const width = 600;
+    const height = 300;
     const [isLoading, setIsLoading] = useState(false);
     const [allPhotos, setAllPhotos] = useState([]);
 
@@ -34,8 +34,8 @@ export function LazyLoad() {
                     <LazyLoadImage
                         key={photo.id}
                         src={photo.url800}
-                        width={width}
-                        height={Math.round((width / photo.dimension800.width) * photo.dimension800.height)}
+                        width={Math.round((height / photo.dimension800.height) * photo.dimension800.width)}
+                        height={height}
                         alt={photo.title || `Photo ${index}`}
                         threshold={1}
                         effect='black-and-white'

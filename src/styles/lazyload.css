@@ -1,4 +1,9 @@
 .lazy-column {
-  display: flex;
+  display: row;
   flex-direction: column;
+  /* margin-left: 15%; */
 }
+
+/* .lazy-load-image-background {
+  margin-bottom: 10px;
+} */
