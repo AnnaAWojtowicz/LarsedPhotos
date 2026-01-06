@@ -1,8 +1,16 @@
 .lazy-column {
-  display: row;
+  display: flex;
   flex-direction: column;
-  /* margin-left: 15%; */
+  gap: 3px;
+  align-items: center;
 }
+
+.lazy-row {
+  display: flex;
+  gap: 0;
+  width: 70vw;
+}
+
 
 /* .lazy-load-image-background {
   margin-bottom: 10px;
