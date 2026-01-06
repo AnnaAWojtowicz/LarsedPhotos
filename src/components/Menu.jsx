@@ -22,6 +22,12 @@ export function Menu() {
         fetchCountries();
     }, []);
 
+    useEffect(() => {
+        if(countries.length > 0){
+            // Open the menu after the countries finished loading
+            setIsOpen(true);
+        }
+    }, [countries]);
 
     return (
         <nav className="menu-container">
