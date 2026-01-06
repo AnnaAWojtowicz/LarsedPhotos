@@ -21,3 +21,8 @@
   color: #666;
   font-size: 14px;
 }
+
+.my-test {
+  display: flex;
+  flex-direction: column;
+}

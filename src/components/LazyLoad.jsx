@@ -3,9 +3,11 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/black-and-white.css";
 import { getPhotos } from '../api/homeApi.js';
 import { svgPlaceholder } from '../constants/placeholders.js';
+import '../styles/lazyload.css'
 
 export function LazyLoad() {
 
+    const width = 600;
     const [isLoading, setIsLoading] = useState(false);
     const [allPhotos, setAllPhotos] = useState([]);
 
@@ -25,20 +27,22 @@ export function LazyLoad() {
     }, []);
 
 
-    return(
-        <div className="carousel">
-            {allPhotos.map((photo, index) =>(
-                <LazyLoadImage 
-                    key={photo.id} 
-                    src={photo.url800}
-                    width={photo.dimension800.width} 
-                    height={photo.dimension800.height}
-                    alt={photo.title || `Photo ${index}`}
-                    threshold = {1}
-                    effect='black-and-white'
-                    placeholderSrc={svgPlaceholder}
-                />
-            ))}
+    return (
+        <div className='lazy-column'>
+            {
+                allPhotos.map((photo, index) => (
+                    <LazyLoadImage
+                        key={photo.id}
+                        src={photo.url800}
+                        width={width}
+                        height={Math.round((width / photo.dimension800.width) * photo.dimension800.height)}
+                        alt={photo.title || `Photo ${index}`}
+                        threshold={1}
+                        effect='black-and-white'
+                        placeholderSrc={svgPlaceholder}
+                    />
+                ))
+            }
         </div>
     );
 }
