@@ -94,16 +94,20 @@ export function LazyLoad() {
                 return (
                     <div key={rowIndex} className='lazy-row'>
                         {row.photos.map((photo, photoIndex) => (
-                            <LazyLoadImage
-                                key={photo.id}
-                                src={photo.url800}
-                                width={widths[photoIndex]}
-                                height={row.height}
-                                alt={photo.title || `Photo ${photoIndex}`}
-                                threshold={1}
-                                effect='black-and-white'
-                                placeholderSrc={svgPlaceholder}
-                            />
+                            <div key={photo.id} className='image-container'>
+                                <LazyLoadImage
+                                    src={photo.url800}
+                                    width={widths[photoIndex]}
+                                    height={row.height}
+                                    alt={photo.title || `Photo ${photoIndex}`}
+                                    threshold={1}
+                                    effect='black-and-white'
+                                    placeholderSrc={svgPlaceholder}
+                                />
+                                <div className='image-overlay' style={{ width: `${widths[photoIndex]}px`, height: `${row.height}px` }}>
+                                    <p className='image-title'>{photo.title}</p>
+                                </div>
+                            </div>
                         ))}
                     </div>
                 );
