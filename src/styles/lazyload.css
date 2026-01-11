@@ -22,12 +22,14 @@
   top: 0;
   left: 0;
   background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0.8) 100%);
+      rgba(0, 0, 0, 0.0) 30%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.5) 80%);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 10px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -39,10 +41,9 @@
 .image-title {
   font-family: "Quicksand", system-ui;
   font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: bold;
-  font-size: 23px;
-  background-color: rgba(0, 0, 0, 0.0);
+  font-weight: 400;
+  font-size: 20px;
   color: #ffffff;
   text-align: center;
+  word-break: break-all;
 }
