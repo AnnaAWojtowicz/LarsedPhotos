@@ -14,19 +14,16 @@
 
 .image-container {
   position: relative;
-  /* overflow: hidden; */
 }
-
-/* .lazy-row img {
-  display: block;
-  cursor: pointer;
-} */
 
 .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.8) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,11 +35,13 @@
   opacity: 1;
 }
 
-/* .image-title {
-  color: white;
+.image-title {
+  font-family: "Quicksand", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: bold;
+  font-size: 23px;
+  background-color: rgba(0, 0, 0, 0.0);
+  color: #ffffff;
   text-align: center;
-  padding: 10px;
-  font-size: 14px;
-  margin: 0;
-  word-break: break-word;
-} */
+}

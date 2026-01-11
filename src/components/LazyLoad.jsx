@@ -104,7 +104,9 @@ export function LazyLoad() {
                                     effect='black-and-white'
                                     placeholderSrc={svgPlaceholder}
                                 />
-                                <div className='image-overlay' style={{ width: `${widths[photoIndex]}px`, height: `${row.height}px` }}>
+                                <div 
+                                    className='image-overlay' 
+                                    style={{ width: `${widths[photoIndex]}px`, height: `${row.height}px` }}>
                                     <p className='image-title'>{photo.title}</p>
                                 </div>
                             </div>
