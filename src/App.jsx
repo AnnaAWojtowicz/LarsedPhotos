@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import { Home } from './components/Home.jsx'
 import SpecificCountryAlbum from './components/SpecificCountryAlbum.jsx'
 import { LazyLoad } from './components/LazyLoad.jsx';
+import { SingleImageView } from './components/SingleImageView.jsx';
 
 function AppWrapper() {
   const location = useLocation();
@@ -12,6 +13,7 @@ function AppWrapper() {
       <Route path="/" element={<Home />} />
       <Route path="/country/:id" element={<SpecificCountryAlbum key={location.key} />} />
       <Route path='/lazy' element={<LazyLoad />} />
+      <Route path='/image/:id' element={<SingleImageView />} />
     </Routes>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/black-and-white.css";
 import { getPhotos } from '../api/homeApi.js';
@@ -7,6 +8,7 @@ import '../styles/lazyload.css'
 
 export function LazyLoad() {
 
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [allPhotos, setAllPhotos] = useState([]);
     const [rows, setRows] = useState([]);
@@ -73,6 +75,10 @@ export function LazyLoad() {
         setRows(calculatedRows);
     }, [allPhotos]);
 
+    const handleImageClick = (photo) => {
+        navigate(`/image/${photo.id}`, { state: { title: photo.title, image_url: photo.url800 } });
+    };
+
     return (
         <div className='lazy-column'>
             {rows.map((row, rowIndex) => {
@@ -94,7 +100,7 @@ export function LazyLoad() {
                 return (
                     <div key={rowIndex} className='lazy-row'>
                         {row.photos.map((photo, photoIndex) => (
-                            <div key={photo.id} className='image-container'>
+                            <div key={photo.id} className='image-container' onClick={() => handleImageClick(photo)} style={{ cursor: 'pointer' }}>
                                 <LazyLoadImage
                                     src={photo.url800}
                                     width={widths[photoIndex]}
