@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,9 +13,7 @@
 
 .modal-content {
     background: black;
-    padding: 10px;
-    /* max-width: 90vw;
-    max-height: 90vh; */
+    padding: 15px;
     overflow: auto;
     position: relative;
 }
@@ -31,12 +29,16 @@
 }
 
 .modal-close {
+    font-family: "Quicksand", system-ui;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
+    right: 15px;
+    font-size: 16px;
     cursor: pointer;
     color: white;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content:hover .modal-close {
+    opacity: 1;
 }
