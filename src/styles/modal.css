@@ -42,3 +42,11 @@
 .modal-content:hover .modal-close {
     opacity: 1;
 }
+
+.modal-propagate-arrow {
+    font-family: "Quicksand", system-ui;
+    background: rgba(0, 0, 0, 0.9);
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
