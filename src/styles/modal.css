@@ -12,13 +12,22 @@
 }
 
 .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 90vw;
-    max-height: 90vh;
+    background: black;
+    padding: 10px;
+    /* max-width: 90vw;
+    max-height: 90vh; */
     overflow: auto;
     position: relative;
+}
+
+.modal-content figcaption {
+    font-family: "Quicksand", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 20px;
+    background-color: black;
+    color: rgb(189, 189, 189);
+    text-align: end;
 }
 
 .modal-close {
@@ -29,4 +38,5 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
+    color: white;
 }
