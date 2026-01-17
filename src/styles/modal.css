@@ -12,6 +12,8 @@
 }
 
 .modal-content {
+    font-family: "Quicksand", system-ui;
+    font-optical-sizing: auto;
     background: black;
     padding: 15px;
     overflow: auto;
@@ -19,7 +21,6 @@
 }
 
 .modal-content figcaption {
-    font-family: "Quicksand", system-ui;
     font-optical-sizing: auto;
     font-weight: 400;
     font-size: 20px;
@@ -28,25 +29,48 @@
     text-align: end;
 }
 
-.modal-close {
-    font-family: "Quicksand", system-ui;
-    position: absolute;
-    right: 15px;
-    font-size: 16px;
+/* Remove button styligng */
+.modal-close,
+.modal-propagate-arrow {
+    background: rgba(0, 0, 0, 0.9);
+    border: none;
+    border-radius: 50%;
     cursor: pointer;
     color: white;
     opacity: 0;
-    background: rgba(0, 0, 0, 0.9);
 }
 
-.modal-content:hover .modal-close {
-    opacity: 1;
-}
-
-.modal-propagate-arrow {
-    font-family: "Quicksand", system-ui;
-    background: rgba(0, 0, 0, 0.9);
+/* Modal X close button specific styling */
+.modal-close {
+    position: absolute;
+    right: 15px;
+    padding: 5px 10px;
+    margin: 5px;
     font-size: 16px;
-    cursor: pointer;
-    color: white;
+}
+
+/* Modal propagate arrow button specific styling */
+.modal-propagate-arrow {
+    font-size: 26px;
+    padding: 3px 10px;
+}
+
+#modal-right-arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-right: 10px;
+}
+
+#modal-left-arrow {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    margin-left: 10px;
+}
+
+/* Change button opacity on hover */
+.modal-content:hover .modal-close,
+.modal-content:hover .modal-propagate-arrow {
+    opacity: 70%;
 }
