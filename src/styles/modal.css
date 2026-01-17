@@ -29,30 +29,39 @@
     text-align: end;
 }
 
+.material-symbols-outlined {
+    color: white;
+    font-size: 2rem;
+}
+
 /* Remove button styligng */
 .modal-close,
 .modal-propagate-arrow {
+    font-family: "Material Symbols Outlined", sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(0, 0, 0, 0.9);
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    color: white;
     opacity: 0;
+    padding: 6px;
 }
 
 /* Modal X close button specific styling */
 .modal-close {
     position: absolute;
     right: 15px;
-    padding: 5px 10px;
-    margin: 5px;
-    font-size: 16px;
 }
 
 /* Modal propagate arrow button specific styling */
 .modal-propagate-arrow {
-    font-size: 26px;
-    padding: 3px 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #modal-right-arrow {

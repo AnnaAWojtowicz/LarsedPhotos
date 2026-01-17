@@ -5,9 +5,21 @@ export function Modal({ photo, onClose }) {
     return (
         <div className='modal-overlay' onClick={onClose}>
             <div className='modal-content' onClick={(e) => e.stopPropagation()}>
-                <button className='modal-close' onClick={onClose}>X</button>
-                <button className='modal-propagate-arrow' id='modal-left-arrow'>&lt;</button>
-                <button className='modal-propagate-arrow' id='modal-right-arrow'>&gt;</button>
+                <button className='modal-close' onClick={onClose}>
+                    <span className="material-symbols-outlined">
+                        close_small
+                    </span>
+                </button>
+                <button className='modal-propagate-arrow' id='modal-left-arrow'>
+                    <span className="material-symbols-outlined">
+                        arrow_circle_left
+                    </span>
+                </button>
+                <button className='modal-propagate-arrow' id='modal-right-arrow'>
+                    <span className="material-symbols-outlined">
+                        arrow_circle_right
+                    </span>
+                </button>
                 <img src={photo.url800} alt={photo.title} />
                 <figcaption>{photo.title}</figcaption>
             </div>
