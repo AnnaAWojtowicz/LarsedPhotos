@@ -6,18 +6,36 @@ export function Modal({ selectedPhoto, photos, onClose }) {
 
     const [activePhoto, setActivePhoto] = useState(null);
 
+    // Set selected photo
     useEffect(() => {
-        const photo = photos.find(x => x.id == selectedPhoto);
+        const photo = photos.find(x => x.id === selectedPhoto);
         setActivePhoto(photo);
     }, [selectedPhoto, photos]); // Runs on those props change
 
     const advancePhoto = (i) => {
-        const nextIndex = photos.findIndex(x => x.id == activePhoto.id) + i;
+        if(!activePhoto) return null;
+        const nextIndex = photos.findIndex(x => x.id === activePhoto.id) + i;
         setActivePhoto(photos[nextIndex]);
     }
 
-    if(!activePhoto)
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'ArrowRight') {
+                advancePhoto(1);
+            } else if (e.key === 'ArrowLeft') {
+                advancePhoto(-1);
+            }
+        }
+        globalThis.addEventListener('keydown', handleKeyDown);
+        return () => globalThis.removeEventListener('keydown', handleKeyDown);
+    }, [activePhoto]);
+
+
+
+    if (!activePhoto)
         return null;
+
 
     return (
         <div className='modal-overlay' onClick={onClose}>
@@ -45,7 +63,7 @@ export function Modal({ selectedPhoto, photos, onClose }) {
 }
 
 Modal.propTypes = {
-    selectedPhoto: PropTypes.object,
+    selectedPhoto: PropTypes.string,
     photos: PropTypes.array.isRequired,
     onClose: PropTypes.func.isRequired,
 };
