@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import '../styles/modal.css';
 
@@ -11,6 +11,11 @@ export function Modal({ selectedPhoto, photos, onClose }) {
         setActivePhoto(photo);
     }, [selectedPhoto, photos]); // Runs on those props change
 
+    const advancePhoto = (i) => {
+        const nextIndex = photos.findIndex(x => x.id == activePhoto.id) + i;
+        setActivePhoto(photos[nextIndex]);
+    }
+
     if(!activePhoto)
         return null;
 
@@ -22,12 +27,12 @@ export function Modal({ selectedPhoto, photos, onClose }) {
                         close_small
                     </span>
                 </button>
-                <button className='modal-propagate-arrow' id='modal-left-arrow'>
+                <button className='modal-propagate-arrow' id='modal-left-arrow' onClick={() => advancePhoto(-1)}>
                     <span className="material-symbols-outlined">
                         arrow_circle_left
                     </span>
                 </button>
-                <button className='modal-propagate-arrow' id='modal-right-arrow'>
+                <button className='modal-propagate-arrow' id='modal-right-arrow' onClick={() => advancePhoto(1)}>
                     <span className="material-symbols-outlined">
                         arrow_circle_right
                     </span>
@@ -38,3 +43,9 @@ export function Modal({ selectedPhoto, photos, onClose }) {
         </div>
     );
 }
+
+Modal.propTypes = {
+    selectedPhoto: PropTypes.object,
+    photos: PropTypes.array.isRequired,
+    onClose: PropTypes.func.isRequired,
+};
