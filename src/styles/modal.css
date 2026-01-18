@@ -1,6 +1,6 @@
 :root {
-    --modal-overlay-bg: rgba(0, 0, 0, 0.95);
-    --modal-caption-color: rgba(100, 100, 100, 0.5);
+    --modal-overlay-bg: rgb(30, 30, 30);
+    --modal-caption-color: rgb(100, 100, 100);
     --modal-caption-hover-color: rgb(180, 180, 180);
 }
 
