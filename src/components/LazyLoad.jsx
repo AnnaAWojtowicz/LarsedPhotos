@@ -11,7 +11,7 @@ export function LazyLoad() {
     const [isLoading, setIsLoading] = useState(false);
     const [allPhotos, setAllPhotos] = useState([]);
     const [rows, setRows] = useState([]);
-    const [selectedPhotoModal, setSelectedPhotoModal] = useState(null);
+    const [selectedPhotoId, setSelectedPhotoId] = useState(null);
 
     useEffect(() => {
         const fetchAllImages = async () => {
@@ -75,60 +75,61 @@ export function LazyLoad() {
         setRows(calculatedRows);
     }, [allPhotos]);
 
-    const handleImageClick = (photo) => {
-        setSelectedPhotoModal(photo);
+    const handleImageClick = (index) => {
+        setSelectedPhotoId(index);
     };
 
     return (
         isLoading ? <div>Fetching data...</div> :
-        <div className='lazy-column'>
-            {rows.map((row, rowIndex) => {
-                // Calculate all widths first
-                const widths = row.photos.map(photo =>
-                    Math.round((row.height / photo.dimension800.height) * photo.dimension800.width)
-                );
+            <div className='lazy-column'>
+                {rows.map((row, rowIndex) => {
+                    // Calculate all widths first
+                    const widths = row.photos.map(photo =>
+                        Math.round((row.height / photo.dimension800.height) * photo.dimension800.width)
+                    );
 
-                // Calculate total and adjust last image to fill exactly
-                const totalWidth = widths.reduce((sum, w) => sum + w, 0);
-                const targetWidth = window.innerWidth * 0.7;
-                const totalGap = (row.photos.length - 1) * 3; // Account for CSS gaps
-                const difference = targetWidth - totalWidth - totalGap;
+                    // Calculate total and adjust last image to fill exactly
+                    const totalWidth = widths.reduce((sum, w) => sum + w, 0);
+                    const targetWidth = window.innerWidth * 0.7;
+                    const totalGap = (row.photos.length - 1) * 3; // Account for CSS gaps
+                    const difference = targetWidth - totalWidth - totalGap;
 
-                if (widths.length > 0) {
-                    widths[widths.length - 1] += difference;
-                }
+                    if (widths.length > 0) {
+                        widths[widths.length - 1] += difference;
+                    }
 
-                return (
-                    <div key={rowIndex} className='lazy-row'>
-                        {row.photos.map((photo, photoIndex) => (
-                            <div key={photo.id} className='image-container' onClick={() => handleImageClick(photo)} style={{ cursor: 'pointer' }}>
-                                <LazyLoadImage
-                                    src={photo.url800}
-                                    width={widths[photoIndex]}
-                                    height={row.height}
-                                    alt={photo.title || `Photo ${photoIndex}`}
-                                    threshold={1}
-                                    effect='black-and-white'
-                                    placeholderSrc={svgPlaceholder}
-                                />
-                                <div
-                                    className='image-overlay'
-                                    style={{ width: `${widths[photoIndex]}px`, height: `${row.height}px` }}>
-                                    <p className='image-title'>{photo.title}</p>
+                    return (
+                        <div key={rowIndex} className='lazy-row'>
+                            {row.photos.map((photo, photoIndex) => (
+                                <div key={photo.id} className='image-container' onClick={() => handleImageClick(photo.id)} style={{ cursor: 'pointer' }}>
+                                    <LazyLoadImage
+                                        src={photo.url800}
+                                        width={widths[photoIndex]}
+                                        height={row.height}
+                                        alt={photo.title || `Photo ${photoIndex}`}
+                                        threshold={1}
+                                        effect='black-and-white'
+                                        placeholderSrc={svgPlaceholder}
+                                    />
+                                    <div
+                                        className='image-overlay'
+                                        style={{ width: `${widths[photoIndex]}px`, height: `${row.height}px` }}>
+                                        <p className='image-title'>{photo.title}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                );
-            })}
+                            ))}
+                        </div>
+                    );
+                })}
 
-            {selectedPhotoModal && (
-                <Modal 
-                    photo={selectedPhotoModal}
-                    onClose={() => setSelectedPhotoModal(null)}
-                />
-            )}
+                {selectedPhotoId && (
+                    <Modal
+                        selectedPhoto={selectedPhotoId}
+                        photos={allPhotos}
+                        onClose={() => setSelectedPhotoId(null)}
+                    />
+                )}
 
-        </div>
+            </div>
     );
 }

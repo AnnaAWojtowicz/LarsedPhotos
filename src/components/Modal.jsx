@@ -1,7 +1,19 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import '../styles/modal.css';
 
-export function Modal({ photo, onClose }) {
+export function Modal({ selectedPhoto, photos, onClose }) {
+
+    const [activePhoto, setActivePhoto] = useState(null);
+
+    useEffect(() => {
+        const photo = photos.find(x => x.id == selectedPhoto);
+        setActivePhoto(photo);
+    }, [selectedPhoto, photos]); // Runs on those props change
+
+    if(!activePhoto)
+        return null;
+
     return (
         <div className='modal-overlay' onClick={onClose}>
             <div className='modal-content' onClick={(e) => e.stopPropagation()}>
@@ -20,17 +32,9 @@ export function Modal({ photo, onClose }) {
                         arrow_circle_right
                     </span>
                 </button>
-                <img src={photo.url800} alt={photo.title} />
-                <figcaption>{photo.title}</figcaption>
+                <img src={activePhoto.url800} alt={activePhoto.title} />
+                <figcaption>{activePhoto.title}</figcaption>
             </div>
         </div>
     );
 }
-
-Modal.propTypes = {
-    photo: PropTypes.shape({
-        url800: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-    }).isRequired,
-    onClose: PropTypes.func.isRequired,
-};
