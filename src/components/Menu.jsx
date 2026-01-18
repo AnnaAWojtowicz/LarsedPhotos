@@ -36,7 +36,7 @@ export function Menu() {
             </a>
             <ul className={`dropdown-menu ${isOpen ? 'toggle' : ''}`}>
                 {countries.length === 0 ? (
-                    <li>Loading...</li>) : (
+                    <li>Fetching data...</li>) : (
                         countries.map((c) => (
                             <li key={c.id}>
                                 <Link to={`/country/${c.id}`}>{c.title}</Link>

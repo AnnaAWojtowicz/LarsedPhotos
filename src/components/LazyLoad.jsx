@@ -39,7 +39,7 @@ export function LazyLoad() {
         let currentRow = [];
         let currentRowWidth = 0;
 
-        allPhotos.forEach((photo, index) => {
+        allPhotos.forEach((photo) => {
             const aspectRatio = photo.dimension800.width / photo.dimension800.height;
             const photoWidth = baseHeight * aspectRatio;
 
@@ -80,6 +80,7 @@ export function LazyLoad() {
     };
 
     return (
+        isLoading ? <div>Fetching data...</div> :
         <div className='lazy-column'>
             {rows.map((row, rowIndex) => {
                 // Calculate all widths first
