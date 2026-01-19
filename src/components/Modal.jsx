@@ -31,7 +31,7 @@ export function Modal({ selectedPhoto, photos, onClose }) {
         }
         globalThis.addEventListener('keydown', handleKeyDown);
         return () => globalThis.removeEventListener('keydown', handleKeyDown);
-    }, [activePhoto, onClose]);
+    }, [advancePhoto, onClose]);
 
 
 
