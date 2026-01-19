@@ -25,11 +25,13 @@ export function Modal({ selectedPhoto, photos, onClose }) {
                 advancePhoto(1);
             } else if (e.key === 'ArrowLeft') {
                 advancePhoto(-1);
+            } else if (e.key === 'Escape') {
+                onClose();
             }
         }
         globalThis.addEventListener('keydown', handleKeyDown);
         return () => globalThis.removeEventListener('keydown', handleKeyDown);
-    }, [activePhoto]);
+    }, [activePhoto, onClose]);
 
 
 
