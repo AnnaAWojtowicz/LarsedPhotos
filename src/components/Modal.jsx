@@ -58,7 +58,10 @@ export function Modal({ selectedPhoto, photos, onClose }) {
                         arrow_circle_right
                     </span>
                 </button>
-                <div onClick={() => navigate(`/photo/${activePhoto.id}`)} style={{ cursor: 'pointer' }}>
+                <div
+                    onClick={() => navigate(`/photo/${activePhoto.id}`, { state: { photo: activePhoto } })}
+                    style={{ cursor: 'pointer' }}
+                >
                     <img src={activePhoto.url800} alt={activePhoto.title} />
                     <figcaption>{activePhoto.title}</figcaption>
                 </div>
