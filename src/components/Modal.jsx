@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/modal.css';
 
 export function Modal({ selectedPhoto, photos, onClose }) {
 
     const [activePhoto, setActivePhoto] = useState(null);
+    const navigate = useNavigate();
+
 
     // Set selected photo
     useEffect(() => {
@@ -13,7 +16,7 @@ export function Modal({ selectedPhoto, photos, onClose }) {
     }, [selectedPhoto, photos]); // Runs on those props change
 
     const advancePhoto = (i) => {
-        if(!activePhoto) return null;
+        if (!activePhoto) return null;
         const nextIndex = photos.findIndex(x => x.id === activePhoto.id) + i;
         setActivePhoto(photos[nextIndex]);
     }
@@ -34,10 +37,8 @@ export function Modal({ selectedPhoto, photos, onClose }) {
     }, [advancePhoto, onClose]);
 
 
-
     if (!activePhoto)
         return null;
-
 
     return (
         <div className='modal-overlay' onClick={onClose}>
@@ -57,8 +58,10 @@ export function Modal({ selectedPhoto, photos, onClose }) {
                         arrow_circle_right
                     </span>
                 </button>
-                <img src={activePhoto.url800} alt={activePhoto.title} />
-                <figcaption>{activePhoto.title}</figcaption>
+                <div onClick={() => navigate(`/photo/${activePhoto.id}`)} style={{ cursor: 'pointer' }}>
+                    <img src={activePhoto.url800} alt={activePhoto.title} />
+                    <figcaption>{activePhoto.title}</figcaption>
+                </div>
             </div>
         </div>
     );
