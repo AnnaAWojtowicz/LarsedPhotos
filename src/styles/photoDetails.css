@@ -6,11 +6,12 @@
 .title-and-photo {
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: end;
 }
 
 .photo-title {
     font-family: "Orbitron", system-ui;
+    font-size: 2rem;
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     color: rgba(0, 0, 0, 0.295);

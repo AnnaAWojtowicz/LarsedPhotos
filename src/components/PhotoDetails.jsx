@@ -56,7 +56,7 @@ export function PhotoDetails() {
             <div className='photo-data-display'>
                 {myPhoto &&
                     <div className='title-and-photo'>
-                        <h1 className='photo-title'>{myPhoto.title}</h1>
+                        <div className='photo-title'>{myPhoto.title}</div>
                         <img src={myPhoto.url800} alt={myPhoto.title} />
                     </div>
                 }
