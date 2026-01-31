@@ -37,6 +37,10 @@ export function PhotoDetails() {
         }
     }, [myPhoto]);
 
+    const getCamerasymbol = () => {
+        return photoExifData.results[0].camera.brand === "DJI" ? "drone_2" : "photo_camera";
+    }
+
     return (
         <>
             {loading && <p>Loading...</p>}
@@ -44,7 +48,7 @@ export function PhotoDetails() {
             {photoExifData &&
                 <>
                     <div className='exif-symbol-group'>
-                        <div className='material-symbols-outlined exif-symbols'>photo_camera</div>
+                        <div className='material-symbols-outlined exif-symbols'>{getCamerasymbol()}</div>
                         <div className='exif-double'>
                             <div className='exif-data'>{photoExifData.results[0].camera.fullName}</div>
                             <div className='exif-data'>{photoExifData.results[0].lens.lens}</div>
