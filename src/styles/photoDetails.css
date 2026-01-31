@@ -1,6 +1,7 @@
 .photo-data-display {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .title-and-photo {
@@ -15,6 +16,10 @@
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     color: rgba(0, 0, 0, 0.295);
+}
+
+.exif {
+    width: 100%;
 }
 
 .exif-symbol-group {
