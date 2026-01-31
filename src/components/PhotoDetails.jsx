@@ -42,6 +42,14 @@ export function PhotoDetails() {
         return photoExifData.results[0].camera.brand === "DJI" ? "drone_2" : "photo_camera";
     }
 
+    // When the focalLength is not available
+    const getAvailableFocalLength = () => {
+        const defaultFocalLength = photoExifData.results[0].lens.focalLength;
+        const standardFocalLenght = photoExifData.results[0].lens.focalLengthIn35mmFormat;
+
+        return defaultFocalLength ?? standardFocalLenght;
+    }
+
     return (
         <>
             {loading && <p>Loading...</p>}
@@ -58,11 +66,17 @@ export function PhotoDetails() {
                         </div>
                     </div>
                     <div className='exif-symbol-group'>
-
+                        <div className='material-symbols-outlined exif-symbols'>shutter_speed</div>
+                            <div className='exif-data'>{photoExifData.results[0].exposure.exposureTime}s</div>
                     </div>
-                    {/* <span>Exposure time: {photoExifData.results[0].exposure.exposureTime} s</span>
-                    <span>Aperture: {photoExifData.results[0].exposure.aperture}</span>
-                    <span>ISO: {photoExifData.results[0].exposure.iso}</span> */}
+                    <div className='exif-symbol-group'>
+                        <div className='material-symbols-outlined exif-symbols'>camera</div>
+                            <div className='exif-data'>{photoExifData.results[0].exposure.aperture}s</div>
+                    </div>
+                    <div className='exif-symbol-group'>
+                        <div className='material-symbols-outlined exif-symbols'>straighten</div>
+                            <div className='exif-data'>{getAvailableFocalLength()}</div>
+                    </div>
                 </>
             }
             {!loading && !myPhoto && <p>Photo not found</p>}
