@@ -1,32 +1,17 @@
 import { useState, useEffect } from 'react';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/black-and-white.css";
-import { getPhotos } from '../api/homeApi.js';
 import { svgPlaceholder } from '../constants/placeholders.js';
 import '../styles/lazyload.css'
 import { Modal } from './Modal.jsx';
+import { usePhotos } from '../context/PhotosContext.jsx';
 
 export function LazyLoad() {
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [allPhotos, setAllPhotos] = useState([]);
+    // Use context to prevent redownloading of photos
+    const { photos: allPhotos, loading: isLoading, error } = usePhotos();
     const [rows, setRows] = useState([]);
     const [selectedPhotoId, setSelectedPhotoId] = useState(null);
-
-    useEffect(() => {
-        const fetchAllImages = async () => {
-            setIsLoading(true);
-            try {
-                const data = await getPhotos();
-                setAllPhotos(data.results);
-            } catch (error) {
-                console.error('Error fetching images:', error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchAllImages();
-    }, []);
 
     useEffect(() => {
         if (allPhotos.length === 0) return;
@@ -82,6 +67,7 @@ export function LazyLoad() {
     return (
         isLoading ? <div>Fetching data...</div> :
             <div className='lazy-column'>
+                {error && <p>Failed to load photos.</p>}
                 {rows.map((row, rowIndex) => {
                     // Calculate all widths first
                     const widths = row.photos.map(photo =>

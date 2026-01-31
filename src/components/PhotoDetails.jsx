@@ -1,37 +1,25 @@
 import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getPhotos } from '../api/homeApi.js';
+import { usePhotos } from '../context/PhotosContext.jsx';
 
 export function PhotoDetails() {
     const { photoId } = useParams();
     const location = useLocation();
     const [myPhoto, setMyPhoto] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { photos, loading } = usePhotos();
 
     useEffect(() => {
         // If photo url passed from state 
         if (location.state?.photo) {
             setMyPhoto(location.state.photo);
-            setLoading(false);
             return;
         }
 
-        // Fetch data again if location state is missing.
-        // Use id from url params as request parameter
-        const loadAllPhotos = async () => {
-            try {
-                const photos = await getPhotos();
-                const foundPhoto = photos.results.find(x => x.id === photoId);
-                setMyPhoto(foundPhoto);
-            } catch (error) {
-                console.error('Error loading photos:', error);
-            } finally {
-                setLoading(false);
-            }
+        if (photos.length > 0) {
+            const foundPhoto = photos.find(x => x.id === photoId);
+            setMyPhoto(foundPhoto ?? null);
         }
-
-        loadAllPhotos();
-    }, [photoId, location.state]);
+    }, [photoId, location.state, photos]);
 
     return (
         <>
