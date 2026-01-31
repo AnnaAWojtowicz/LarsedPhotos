@@ -37,6 +37,7 @@ export function PhotoDetails() {
         }
     }, [myPhoto]);
 
+    // Show drone icon for drone photo instead of camera icon
     const getCamerasymbol = () => {
         return photoExifData.results[0].camera.brand === "DJI" ? "drone_2" : "photo_camera";
     }
@@ -51,8 +52,13 @@ export function PhotoDetails() {
                         <div className='material-symbols-outlined exif-symbols'>{getCamerasymbol()}</div>
                         <div className='exif-double'>
                             <div className='exif-data'>{photoExifData.results[0].camera.fullName}</div>
-                            <div className='exif-data'>{photoExifData.results[0].lens.lens}</div>
+                            {photoExifData.results[0].camera.brand !== "DJI" && //only show if not a drone shot
+                                <div className='exif-data'>{photoExifData.results[0].lens.lens}</div>
+                            }
                         </div>
+                    </div>
+                    <div className='exif-symbol-group'>
+
                     </div>
                     {/* <span>Exposure time: {photoExifData.results[0].exposure.exposureTime} s</span>
                     <span>Aperture: {photoExifData.results[0].exposure.aperture}</span>
