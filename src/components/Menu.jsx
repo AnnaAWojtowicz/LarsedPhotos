@@ -1,29 +1,17 @@
 import { useState, useEffect } from 'react';
-import { getCountriesApi } from '../api/getCountriesApi.js';
 import "../styles/menu.css";
 import { Link } from 'react-router-dom';
+import { useCountries } from '../context/CountriesContext.jsx';
 
 
 export function Menu() {
 
-    const [countries, setCountries] = useState([]);
+    // Use context to prevent redownloading
+    const { countries, loading, error } = useCountries();
     const [isOpen, setIsOpen] = useState(false);
 
-    // Fetch albums with countries
     useEffect(() => {
-        const fetchCountries = async () => {
-            try {
-                const data = await getCountriesApi();
-                setCountries(data.results);
-            } catch (error) {
-                console.error('Error fetching countries for menu:', error);
-            }
-        };
-        fetchCountries();
-    }, []);
-
-    useEffect(() => {
-        if(countries.length > 0){
+        if (countries.length > 0) {
             // Open the menu after the countries finished loading
             setIsOpen(true);
         }
@@ -35,7 +23,8 @@ export function Menu() {
                 <span className={`menu-header ${isOpen ? 'toggle' : ''}`}>Lukas Larsed</span>
             </a>
             <ul className={`dropdown-menu ${isOpen ? 'toggle' : ''}`}>
-                {countries.length === 0 ? (
+                {error && <li>Failed to load countries.</li>}
+                {loading || countries.length === 0 ? (
                     <li>Fetching data...</li>) : (
                         countries.map((c) => (
                             <li key={c.id}>
