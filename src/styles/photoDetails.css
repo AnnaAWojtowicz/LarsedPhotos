@@ -1,0 +1,21 @@
+.exif-symbol-group {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.exif-symbols {
+    color: rgb(65, 65, 65);
+}
+
+.exif-double {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+.exif-data {
+    font-family: "Quicksand", system-ui;
+    font-size: 1rem;
+}
