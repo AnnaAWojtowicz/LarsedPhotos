@@ -53,32 +53,39 @@ export function PhotoDetails() {
     return (
         <>
             {loading && <p>Loading...</p>}
-            {myPhoto && <><h1>{myPhoto.title}</h1><img src={myPhoto.url800} alt={myPhoto.title} /></>}
-            {photoExifData &&
-                <>
-                    <div className='exif-symbol-group'>
-                        <div className='material-symbols-outlined exif-symbols'>{getCamerasymbol()}</div>
-                        <div className='exif-double'>
-                            <div className='exif-data'>{photoExifData.results[0].camera.fullName}</div>
-                            {photoExifData.results[0].camera.brand !== "DJI" && //only show if not a drone shot
-                                <div className='exif-data'>{photoExifData.results[0].lens.lens}</div>
-                            }
+            <div className='photo-data-display'>
+                {myPhoto &&
+                    <div className='title-and-photo'>
+                        <h1 className='photo-title'>{myPhoto.title}</h1>
+                        <img src={myPhoto.url800} alt={myPhoto.title} />
+                    </div>
+                }
+                {photoExifData &&
+                    <div className='exif'>
+                        <div className='exif-symbol-group'>
+                            <div className='material-symbols-outlined exif-symbols'>{getCamerasymbol()}</div>
+                            <div className='exif-double'>
+                                <div className='exif-data'>{photoExifData.results[0].camera.fullName}</div>
+                                {photoExifData.results[0].camera.brand !== "DJI" && //only show if not a drone shot
+                                    <div className='exif-data'>{photoExifData.results[0].lens.lens}</div>
+                                }
+                            </div>
+                        </div>
+                        <div className='exif-symbol-group'>
+                            <div className='material-symbols-outlined exif-symbols'>shutter_speed</div>
+                            <div className='exif-data'>{photoExifData.results[0].exposure.exposureTime}s</div>
+                        </div>
+                        <div className='exif-symbol-group'>
+                            <div className='material-symbols-outlined exif-symbols'>camera</div>
+                            <div className='exif-data'>{photoExifData.results[0].exposure.aperture}s</div>
+                        </div>
+                        <div className='exif-symbol-group'>
+                            <div className='material-symbols-outlined exif-symbols'>straighten</div>
+                            <div className='exif-data'>{getAvailableFocalLength()}</div>
                         </div>
                     </div>
-                    <div className='exif-symbol-group'>
-                        <div className='material-symbols-outlined exif-symbols'>shutter_speed</div>
-                            <div className='exif-data'>{photoExifData.results[0].exposure.exposureTime}s</div>
-                    </div>
-                    <div className='exif-symbol-group'>
-                        <div className='material-symbols-outlined exif-symbols'>camera</div>
-                            <div className='exif-data'>{photoExifData.results[0].exposure.aperture}s</div>
-                    </div>
-                    <div className='exif-symbol-group'>
-                        <div className='material-symbols-outlined exif-symbols'>straighten</div>
-                            <div className='exif-data'>{getAvailableFocalLength()}</div>
-                    </div>
-                </>
-            }
+                }
+            </div>
             {!loading && !myPhoto && <p>Photo not found</p>}
         </>
     )

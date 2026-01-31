@@ -1,3 +1,21 @@
+.photo-data-display {
+    display: flex;
+    flex-direction: row;
+}
+
+.title-and-photo {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.photo-title {
+    font-family: "Orbitron", system-ui;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    color: rgba(0, 0, 0, 0.295);
+}
+
 .exif-symbol-group {
     display: flex;
     flex-direction: row;
