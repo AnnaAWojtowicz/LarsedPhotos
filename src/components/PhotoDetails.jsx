@@ -74,6 +74,14 @@ export function PhotoDetails() {
             <div className='tag' key={i}>{e}</div>
         )) : null;
 
+    const formatDate = iso => {
+        if (!iso) return "";
+        const d = new Date(iso);
+        return d.toLocaleDateString(undefined, { day: "2-digit", month: "short", year: "numeric" });
+        // for full month name use: month: "long"
+    };
+
+
     return (
         <>
             {loading && <p>Loading...</p>}
@@ -96,7 +104,7 @@ export function PhotoDetails() {
                             </div>
                         </div>
                         <div className='exif-symbol-group'>
-                            <div className='material-symbols-outlined exif-symbols'>shutter_speed</div>
+                            <div className='material-symbols-outlined exif-symbols exif-symbols-larger'>shutter_speed</div>
                             <div className='exif-data'>{photoExifData.results[0].exposure.exposureTime}s</div>
                         </div>
                         <div className='exif-symbol-group'>
@@ -104,8 +112,12 @@ export function PhotoDetails() {
                             <div className='exif-data'>{photoExifData.results[0].exposure.aperture}s</div>
                         </div>
                         <div className='exif-symbol-group'>
-                            <div className='material-symbols-outlined exif-symbols'>straighten</div>
+                            <div className='material-symbols-outlined exif-symbols'>farsight_digital</div>
                             <div className='exif-data'>{getAvailableFocalLength()}</div>
+                        </div>
+                        <div className='exif-symbol-group'>
+                            <div className='material-symbols-outlined exif-symbols'>event</div>
+                            <div className='exif-data'>{formatDate(photoExifData.results[0].createDate)}</div>
                         </div>
                         <div className='photo-map'>
                             <MapContainer

@@ -43,6 +43,11 @@
     margin: 0.15rem 0.75rem;
 }
 
+.exif-symbols-larger {
+    font-size: 1.7rem;
+    margin-left: 11px;
+}
+
 .exif-double {
     display: flex;
     flex-direction: column;
