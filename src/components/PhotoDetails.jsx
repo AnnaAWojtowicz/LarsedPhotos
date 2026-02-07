@@ -51,7 +51,23 @@ export function PhotoDetails() {
         return defaultFocalLength ?? standardFocalLenght;
     }
 
-    const position = [51.505, -0.09]
+    const position = photoExifData?.results?.[0]?.location
+        ? [photoExifData.results[0].location.latitude, photoExifData.results[0].location.longitude]
+        : [0, 0];
+
+    const zoomLevel = photoExifData?.results?.[0]?.location
+        ? photoExifData.results[0].location.accuracy
+        : 16;
+
+    const getLocationText = () => {
+        const location = photoExifData.results[0].location;
+        const neighbourhood = location.neighbourhood;
+        const locality = location.locality;
+        const county = location.county;
+        const region = location.region;
+
+        return [neighbourhood, locality, county, region].filter(Boolean).join(", ");    
+    }
 
     return (
         <>
@@ -89,34 +105,20 @@ export function PhotoDetails() {
                             </div>
                         </div>
                         <div className='photo-map'>
-                            <p>Location</p>
-                            <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+                            <MapContainer center={position} zoom={zoomLevel} scrollWheelZoom={true}>
                                 <TileLayer
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
                                 <Marker position={position}>
                                     <Popup>
-                                        A pretty CSS3 popup. <br /> Easily customizable.
+                                        {getLocationText()}
                                     </Popup>
                                 </Marker>
                             </MapContainer>
                         </div>
                     </>
                 }
-                <div className='photo-map'>
-                    <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-                        <TileLayer
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                        <Marker position={position}>
-                            <Popup>
-                                A pretty CSS3 popup. <br /> Easily customizable.
-                            </Popup>
-                        </Marker>
-                    </MapContainer>
-                </div>
             </div>
             {!loading && !myPhoto && <p>Photo not found</p>}
         </>

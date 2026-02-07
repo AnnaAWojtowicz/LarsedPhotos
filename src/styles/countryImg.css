@@ -90,7 +90,7 @@ button.symbol-button:hover {
 
 .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
   border-radius: 50%;
-  border: 0.5px solid black;
+  border: 2px solid black;
   filter: grayscale(100%);
 }
 
