@@ -87,12 +87,12 @@ button.symbol-button:hover {
 .leaflet-marker-icon {
   background-color: transparent;
 }
-
+/* 
 .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
   border-radius: 50%;
   border: 2px solid black;
   filter: grayscale(100%);
-}
+} */
 
 @media (max-width: 992px) {
   .img-section {
