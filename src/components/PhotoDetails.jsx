@@ -66,7 +66,7 @@ export function PhotoDetails() {
         const county = location.county;
         const region = location.region;
 
-        return [neighbourhood, locality, county, region].filter(Boolean).join(", ");    
+        return [neighbourhood, locality, county, region].filter(Boolean).join(", ");
     }
 
     return (
@@ -103,19 +103,24 @@ export function PhotoDetails() {
                                 <div className='material-symbols-outlined exif-symbols'>straighten</div>
                                 <div className='exif-data'>{getAvailableFocalLength()}</div>
                             </div>
-                        </div>
-                        <div className='photo-map'>
-                            <MapContainer center={position} zoom={zoomLevel} scrollWheelZoom={true}>
-                                <TileLayer
-                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                />
-                                <Marker position={position}>
-                                    <Popup>
-                                        {getLocationText()}
-                                    </Popup>
-                                </Marker>
-                            </MapContainer>
+                            <div className='photo-map'>
+                                <MapContainer
+                                    center={position}
+                                    zoom={zoomLevel}
+                                    scrollWheelZoom={true}
+                                    zoomControl={false}
+                                    attributionControl={false}>
+                                    <TileLayer
+                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                    />
+                                    <Marker position={position}>
+                                        <Popup>
+                                            {getLocationText()}
+                                        </Popup>
+                                    </Marker>
+                                </MapContainer>
+                            </div>
                         </div>
                     </>
                 }
