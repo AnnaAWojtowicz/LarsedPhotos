@@ -52,13 +52,17 @@
 .exif .camera-settings-map {
     display: flex;
     justify-content: flex-start;
-    margin-left: 15px;
+    margin-left: 5px;
 }
 
 .exif .camera-settings-map .exif-details {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.exif .camera-settings-map .photo-map {
+    margin-left: 60px;
 }
 
 .margin-bottom {
