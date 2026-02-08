@@ -94,6 +94,16 @@ export function PhotoDetails() {
                 }
                 {photoExifData &&
                     <div className='exif'>
+                        <div className='place-date'>
+                            <div className='exif-symbol-group'>
+                                <div className='material-symbols-outlined exif-symbols'>pin_drop</div>
+                                <div className='exif-data'>{getLocationText()}</div>
+                            </div>
+                            <div className='exif-symbol-group'>
+                                <div className='material-symbols-outlined exif-symbols'>event</div>
+                                <div className='exif-data'>{formatDate(photoExifData.results[0].createDate)}</div>
+                            </div>
+                        </div>
                         <div className='exif-symbol-group'>
                             <div className='material-symbols-outlined exif-symbols'>{getCamerasymbol()}</div>
                             <div className='exif-double'>
@@ -115,10 +125,7 @@ export function PhotoDetails() {
                             <div className='material-symbols-outlined exif-symbols'>farsight_digital</div>
                             <div className='exif-data'>{getAvailableFocalLength()}</div>
                         </div>
-                        <div className='exif-symbol-group'>
-                            <div className='material-symbols-outlined exif-symbols'>event</div>
-                            <div className='exif-data'>{formatDate(photoExifData.results[0].createDate)}</div>
-                        </div>
+
                         <div className='photo-map'>
                             <MapContainer
                                 center={position}
