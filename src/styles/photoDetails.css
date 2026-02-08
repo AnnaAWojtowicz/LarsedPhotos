@@ -30,11 +30,10 @@
     font-family: "Quicksand", system-ui;
     margin-top: -40px;
     margin-left: 50px;
-    width: 40%;
 }
 
 .exif .exif-header-group {
-    width: 80%;
+    width: 600px;
 }
 
 .exif .exif-header-text {
