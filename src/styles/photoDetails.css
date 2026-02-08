@@ -25,6 +25,22 @@
     font-family: "Quicksand", system-ui;
 }
 
+.exif .camera-settings-map {
+    display: flex;
+    gap: 40px;
+}
+
+.exif .camera-settings-map
+.camera-settings {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.exif .camera-settings-map
+.camera-settings .place-date {
+    margin-bottom: 10px;
+}
+
 .exif-symbol-group {
     display: flex;
     flex-direction: row;
