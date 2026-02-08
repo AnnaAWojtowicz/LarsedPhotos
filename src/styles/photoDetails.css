@@ -30,6 +30,7 @@
     font-family: "Quicksand", system-ui;
     margin-top: -40px;
     margin-left: 50px;
+    width: 40%;
 }
 
 .exif .exif-header-group {
@@ -52,7 +53,7 @@
 .exif .camera-settings-map {
     display: flex;
     justify-content: flex-start;
-    gap: 70px;
+    margin-left: 15px;
 }
 
 .exif .camera-settings-map .exif-details {
@@ -118,5 +119,5 @@
     flex-wrap: wrap;
     /* margin-top: 50px; */
     padding: 5px;
-    width: 80%;
+    width: 600px;
 }
