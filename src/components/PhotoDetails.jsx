@@ -95,8 +95,8 @@ export function PhotoDetails() {
                 {photoExifData &&
                     <div className='exif'>
                         <div className='camera-settings-map'>
-                            <div className='camera-settings'>
-                                <div className='place-date'>
+                            <div className='exif-details'>
+                                <div className='place-date margin-bottom'>
                                     <div className='exif-symbol-group'>
                                         <div className='material-symbols-outlined exif-symbols'>pin_drop</div>
                                         <div className='exif-data'>{getLocationText()}</div>
@@ -106,7 +106,7 @@ export function PhotoDetails() {
                                         <div className='exif-data'>{formatDate(photoExifData.results[0].createDate)}</div>
                                     </div>
                                 </div>
-                                <div className='exif-symbol-group'>
+                                <div className='exif-symbol-group margin-bottom'>
                                     <div className='material-symbols-outlined exif-symbols'>{getCamerasymbol()}</div>
                                     <div className='exif-double'>
                                         <div className='exif-data'>{photoExifData.results[0].camera.fullName}</div>
@@ -115,17 +115,19 @@ export function PhotoDetails() {
                                         }
                                     </div>
                                 </div>
-                                <div className='exif-symbol-group'>
-                                    <div className='material-symbols-outlined exif-symbols exif-symbols-larger'>shutter_speed</div>
-                                    <div className='exif-data'>{photoExifData.results[0].exposure.exposureTime}s</div>
-                                </div>
-                                <div className='exif-symbol-group'>
-                                    <div className='material-symbols-outlined exif-symbols'>camera</div>
-                                    <div className='exif-data'>{photoExifData.results[0].exposure.aperture}s</div>
-                                </div>
-                                <div className='exif-symbol-group'>
-                                    <div className='material-symbols-outlined exif-symbols'>farsight_digital</div>
-                                    <div className='exif-data'>{getAvailableFocalLength()}</div>
+                                <div className='camere-settings'>
+                                    <div className='exif-symbol-group'>
+                                        <div className='material-symbols-outlined exif-symbols exif-symbols-larger'>shutter_speed</div>
+                                        <div className='exif-data'>{photoExifData.results[0].exposure.exposureTime}s</div>
+                                    </div>
+                                    <div className='exif-symbol-group'>
+                                        <div className='material-symbols-outlined exif-symbols'>camera</div>
+                                        <div className='exif-data'>{photoExifData.results[0].exposure.aperture}s</div>
+                                    </div>
+                                    <div className='exif-symbol-group'>
+                                        <div className='material-symbols-outlined exif-symbols'>farsight_digital</div>
+                                        <div className='exif-data'>{getAvailableFocalLength()}</div>
+                                    </div>
                                 </div>
                             </div>
                             <div className='photo-map'>
