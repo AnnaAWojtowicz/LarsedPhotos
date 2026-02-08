@@ -1,5 +1,6 @@
 .photo-data-display {
     display: flex;
+    margin-top: 70px;
     margin-left: -8px;
 }
 
@@ -8,7 +9,7 @@
     width: fit-content;
     height: fit-content;
     background-color: rgba(0, 0, 0, 0.267);
-    padding: 20px 20px 20px 100px;
+    padding: 20px 20px 20px 70px;
     border-radius: 0px 5px 5px 0px;
 }
 
@@ -27,14 +28,31 @@
     justify-content: flex-start;
     gap: 50px;
     font-family: "Quicksand", system-ui;
-    margin-top: 20px;
+    margin-top: -40px;
     margin-left: 50px;
+}
+
+.exif .exif-header-group {
+    width: 80%;
+}
+
+.exif .exif-header-text {
+    font-family: "Orbitron", system-ui;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 2rem;
+    text-align: end;
+}
+
+.exif .exif-header-decor {
+    width: 100%;
+    height: 1.5px;
+    background-color: #a29320;
 }
 
 .exif .camera-settings-map {
     display: flex;
     justify-content: flex-start;
-    gap: 50px;
+    gap: 70px;
 }
 
 .exif .camera-settings-map .exif-details {

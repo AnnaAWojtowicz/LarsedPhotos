@@ -84,6 +84,7 @@ export function PhotoDetails() {
 
     return (
         <>
+            <div className='decor' />
             {loading && <p>Loading...</p>}
             <div className='photo-data-display'>
                 {myPhoto &&
@@ -94,6 +95,10 @@ export function PhotoDetails() {
                 }
                 {photoExifData &&
                     <div className='exif'>
+                        <div className='exif-header-group'>
+                            <div className='exif-header-text'>exif</div>
+                            <div className='exif-header-decor' />
+                        </div>
                         <div className='camera-settings-map'>
                             <div className='exif-details'>
                                 <div className='place-date margin-bottom'>
