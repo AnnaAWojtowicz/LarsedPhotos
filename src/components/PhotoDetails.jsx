@@ -114,7 +114,7 @@ export function PhotoDetails() {
                                 <div className='place-date margin-bottom'>
                                     <div className='exif-symbol-group'>
                                         <div className='material-symbols-outlined exif-symbols'>pin_drop</div>
-                                        <div className='exif-data'>{getLocationText()}</div>
+                                        <div className='exif-data exif-location'>{getLocationText()}</div>
                                     </div>
                                     <div className='exif-symbol-group'>
                                         <div className='material-symbols-outlined exif-symbols'>event</div>
