@@ -11,6 +11,8 @@ export function PhotoDetails() {
     const [myPhoto, setMyPhoto] = useState(null);
     const { photos, loading } = usePhotos();
     const [photoExifData, setPhotoExifData] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
+
 
     useEffect(() => {
         // If photo url passed from state 
@@ -85,6 +87,13 @@ export function PhotoDetails() {
     return (
         <>
             <div className='decor' />
+
+            <nav className="menu-container-2">
+                <a href="/" onClick={() => setIsOpen(!isOpen)}>
+                    <span className={`menu-header-2 ${isOpen ? 'toggle' : ''}`}>back</span>
+                </a>
+            </nav >
+
             {loading && <p>Loading...</p>}
             <div className='photo-data-display'>
                 {myPhoto &&

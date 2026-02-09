@@ -124,3 +124,34 @@
     padding: 5px;
     width: 600px;
 }
+
+/* Menu */
+
+.menu-container-2 {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+}
+
+.menu-container-2 a {
+    font-family: "Orbitron", system-ui;
+    font-size: 2rem;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.menu-header-2::before {
+    display: inline-block;
+    font-family: "Material Symbols Outlined", sans-serif;
+    content: "\eac3";
+    vertical-align: middle;
+    border-left: 0.1em solid transparent;
+    color: #a29320;
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.menu-header-2:hover::before {
+    transform: translateX(-10px);
+    transition: transform 0.3s ease-in-out;
+}
