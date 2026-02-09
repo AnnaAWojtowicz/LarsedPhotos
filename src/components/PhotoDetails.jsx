@@ -1,4 +1,4 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { usePhotos } from '../context/PhotosContext.jsx';
 import { getSpecificImgDetails } from '../api/getSpecificImgDetails.js';
@@ -8,6 +8,7 @@ import "../styles/photoDetails.css";
 export function PhotoDetails() {
     const { photoId } = useParams();
     const location = useLocation();
+    const navigate = useNavigate();
     const [myPhoto, setMyPhoto] = useState(null);
     const { photos, loading } = usePhotos();
     const [photoExifData, setPhotoExifData] = useState(null);
@@ -89,7 +90,7 @@ export function PhotoDetails() {
             <div className='decor' />
 
             <nav className="menu-container-2">
-                <a href="/" onClick={() => setIsOpen(!isOpen)}>
+                <a href="#" onClick={() => { navigate(-1); setIsOpen(!isOpen); }}>
                     <span className={`menu-header-2 ${isOpen ? 'toggle' : ''}`}>back</span>
                 </a>
             </nav >
