@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/black-and-white.css";
 import { svgPlaceholder } from '../constants/placeholders.js';
@@ -12,6 +12,7 @@ export function LazyLoad() {
     const { photos: allPhotos, loading: isLoading, error } = usePhotos();
     const [rows, setRows] = useState([]);
     const [selectedPhotoId, setSelectedPhotoId] = useState(null);
+    const modalPushedRef = useRef(false);
 
     useEffect(() => {
         if (allPhotos.length === 0) return;
@@ -64,6 +65,36 @@ export function LazyLoad() {
         setSelectedPhotoId(index);
     };
 
+    useEffect(() => {
+        if (selectedPhotoId && !modalPushedRef.current) {
+            window.history.pushState({ modal: true }, '');
+            modalPushedRef.current = true;
+        }
+
+        if (!selectedPhotoId) {
+            modalPushedRef.current = false;
+        }
+    }, [selectedPhotoId]);
+
+    useEffect(() => {
+        const handlePopState = () => {
+            if (selectedPhotoId) {
+                setSelectedPhotoId(null);
+            }
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, [selectedPhotoId]);
+
+    const closeModal = () => {
+        if (window.history.state?.modal) {
+            window.history.back();
+            return;
+        }
+        setSelectedPhotoId(null);
+    };
+
     return (
         isLoading ? <div>Fetching data...</div> :
             <div className='lazy-column'>
@@ -112,7 +143,7 @@ export function LazyLoad() {
                     <Modal
                         selectedPhoto={selectedPhotoId}
                         photos={allPhotos}
-                        onClose={() => setSelectedPhotoId(null)}
+                        onClose={closeModal}
                     />
                 )}
 
