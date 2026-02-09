@@ -23,7 +23,7 @@
 }
 
 .modal-drop::after {
-    content: 'View Details';
+    content: 'view details';
     position: absolute;
     top: 50%;
     left: 50%;
