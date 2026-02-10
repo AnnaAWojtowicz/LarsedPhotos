@@ -12,6 +12,7 @@ export function PhotoDetails() {
     const [myPhoto, setMyPhoto] = useState(null);
     const { photos, loading } = usePhotos();
     const [photoExifData, setPhotoExifData] = useState(null);
+    const [exifError, setExifError] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
 
@@ -36,6 +37,25 @@ export function PhotoDetails() {
             const getExifData = async () => {
                 const photoExif = await getSpecificImgDetails(myPhoto.id);
                 setPhotoExifData(photoExif);
+
+                const allValuesNull = (val) => {
+                    if (val === null) return true;
+                    if (typeof val !== 'object') return false;
+                    if (Array.isArray(val)) return val.length === 0 || val.every(allValuesNull);
+                    for (const k in val) {
+                        if (Object.prototype.hasOwnProperty.call(val, k)) {
+                            if (!allValuesNull(val[k])) return false;
+                        }
+                    }
+                    return true;
+                };
+
+                const first = photoExif?.results?.[0];
+                if (!first || allValuesNull(first)) {
+                    setExifError(true);
+                } else {
+                    setExifError(false);
+                }
             };
             getExifData();
         }
@@ -43,15 +63,15 @@ export function PhotoDetails() {
 
     // Show drone icon for drone photo instead of camera icon
     const getCamerasymbol = () => {
-        return photoExifData.results[0].camera.brand === "DJI" ? "drone_2" : "photo_camera";
+        const brand = photoExifData?.results?.[0]?.camera?.brand;
+        return brand === "DJI" ? "drone_2" : "photo_camera";
     }
 
     // When the focalLength is not available
     const getAvailableFocalLength = () => {
-        const defaultFocalLength = photoExifData.results[0].lens.focalLength;
-        const standardFocalLenght = photoExifData.results[0].lens.focalLengthIn35mmFormat;
-
-        return defaultFocalLength ?? standardFocalLenght;
+        const lens = photoExifData?.results?.[0]?.lens;
+        if (!lens) return "";
+        return lens.focalLength ?? lens.focalLengthIn35mmFormat ?? "";
     }
 
     const position = photoExifData?.results?.[0]?.location
@@ -63,12 +83,9 @@ export function PhotoDetails() {
         : 16;
 
     const getLocationText = () => {
-        const location = photoExifData.results[0].location;
-        const neighbourhood = location.neighbourhood;
-        const locality = location.locality;
-        const county = location.county;
-        const region = location.region;
-
+        const location = photoExifData?.results?.[0]?.location;
+        if (!location) return "";
+        const { neighbourhood, locality, county, region } = location;
         return [neighbourhood, locality, county, region].filter(Boolean).join(", ");
     }
 
@@ -103,7 +120,7 @@ export function PhotoDetails() {
                         <img src={myPhoto.url800} alt={myPhoto.title} />
                     </div>
                 }
-                {photoExifData &&
+                {photoExifData && !exifError &&
                     <div className='exif'>
                         <div className='exif-header-group'>
                             <div className='exif-header-text'>exif</div>
@@ -166,6 +183,18 @@ export function PhotoDetails() {
                         </div>
                         <div className='tags-collection'>
                             {tags}
+                        </div>
+                    </div>
+                }
+
+                {photoExifData && exifError &&
+                    <div className='exif'>
+                        <div className='exif-header-group'>
+                            <div className='exif-header-text'>exif</div>
+                            <div className='exif-header-decor' />
+                        </div>
+                        <div style={{ padding: '12px' }}>
+                            <p>Error occured while fetching EXIF data for this photo.</p>
                         </div>
                     </div>
                 }
