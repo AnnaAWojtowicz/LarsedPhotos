@@ -28,7 +28,8 @@ export function Menu() {
                     <li>Fetching data...</li>) : (
                         countries.map((c) => (
                             <li key={c.id}>
-                                <Link to={`/country/${c.id}`}>{c.title}</Link>
+                                {/* <Link to={`/country/${c.id}`}>{c.title}</Link> */}
+                                <Link to={`/album/${c.id}`}>{c.title}</Link>
                             </li>
                         ))
                 )}
