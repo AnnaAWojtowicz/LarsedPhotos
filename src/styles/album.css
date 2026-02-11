@@ -1,0 +1,32 @@
+.decor-album {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 7%;
+  width: 3px;
+  height: auto;
+  background-color: #a29320;
+}
+
+.album-title {
+    font-family: "Orbitron", system-ui;
+    font-size: 5em;
+    font-weight: 400;
+    writing-mode: vertical-lr;
+    color: rgba(0, 0, 0, 0.499);
+    transform: rotate(180deg);
+    position: fixed;
+    top: 16px;
+    left: 18px;
+    margin: 0;
+    z-index: 1;
+
+}
+
+.album-photos {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    left: 150px;
+}

@@ -29,7 +29,7 @@ export function Menu() {
                         countries.map((c) => (
                             <li key={c.id}>
                                 {/* <Link to={`/country/${c.id}`}>{c.title}</Link> */}
-                                <Link to={`/album/${c.id}`}>{c.title}</Link>
+                                <Link to={`/album/${c.id}`} state={{title: c.title}}>{c.title}</Link>
                             </li>
                         ))
                 )}
