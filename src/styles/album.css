@@ -1,11 +1,11 @@
 .decor-album {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 7%;
-  width: 3px;
-  height: auto;
-  background-color: #a29320;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 7%;
+    width: 3px;
+    height: auto;
+    background-color: #a29320;
 }
 
 .album-title {
@@ -20,7 +20,6 @@
     left: 18px;
     margin: 0;
     z-index: 1;
-
 }
 
 .album-photos {
@@ -29,4 +28,5 @@
     flex-direction: column;
     align-items: flex-start;
     left: 150px;
+    gap: 8px;
 }
