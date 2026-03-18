@@ -2,6 +2,7 @@ import { useParams, useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getSpecificCountryAlbum } from "../api/getSpecificCountryAlbum";
 import "../styles/album.css";
+import "../styles/lazyload.css";
 
 export function Album() {
     const { albumId } = useParams();
@@ -35,7 +36,12 @@ export function Album() {
                 <div className="album-photos">
                     {albumData.results.map((photo) => (
                         <Link key={photo.id} to={`/photo/${photo.id}`} state={{ photo }}>
-                            <img src={photo.url800} alt={photo.title} />
+                            <div className="image-container">
+                                <img src={photo.url800} alt={photo.title} />
+                                <div className="image-overlay">
+                                    <p className="image-title">{photo.title}</p>
+                                </div>
+                            </div>
                         </Link>
                     ))}
                 </div>
