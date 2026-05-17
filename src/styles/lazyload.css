@@ -48,3 +48,14 @@
   text-align: center;
   word-break: break-all;
 }
+
+@media (max-width: 767px) {
+  .lazy-column {
+    margin-left: 0;
+  }
+
+  .lazy-row {
+    width: 100vw;
+    gap: 0;
+  }
+}

@@ -34,7 +34,8 @@ export function LazyLoad() {
     useEffect(() => {
         if (allPhotos.length === 0) return;
 
-        const targetRowWidth = windowWidth * 0.7;
+        const isMobile = windowWidth < 768;
+        const targetRowWidth = windowWidth * (isMobile ? 1 : 0.7);
         const baseHeight = 300;
         const gap = 3; // This much match the gap in the .lazy-row class
 
@@ -46,7 +47,12 @@ export function LazyLoad() {
             const aspectRatio = photo.dimension800.width / photo.dimension800.height;
             const photoWidth = baseHeight * aspectRatio;
 
-            if (currentRowWidth + photoWidth + (currentRow.length * gap) > targetRowWidth && currentRow.length > 0) {
+            // Mobile: one photo per row. Desktop: pack until target width is exceeded.
+            const shouldFinalizeRow = isMobile
+                ? currentRow.length > 0
+                : currentRowWidth + photoWidth + (currentRow.length * gap) > targetRowWidth && currentRow.length > 0;
+
+            if (shouldFinalizeRow) {
                 // Calculate exact height for this row
                 const totalAspectRatio = currentRow.reduce((sum, p) => sum + (p.dimension800.width / p.dimension800.height), 0);
                 const rowHeight = (targetRowWidth - (currentRow.length - 1) * gap) / totalAspectRatio;
@@ -124,7 +130,7 @@ export function LazyLoad() {
 
                     // Calculate total and adjust last image to fill exactly
                     const totalWidth = widths.reduce((sum, w) => sum + w, 0);
-                    const targetWidth = windowWidth * 0.7;
+                    const targetWidth = windowWidth * (windowWidth < 768 ? 1 : 0.7);
                     const totalGap = (row.photos.length - 1) * 3; // Account for CSS gaps
                     const difference = targetWidth - totalWidth - totalGap;
 

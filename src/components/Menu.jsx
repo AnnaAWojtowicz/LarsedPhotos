@@ -9,18 +9,34 @@ export function Menu() {
     // Use context to prevent redownloading
     const { countries, loading, error } = useCountries();
     const [isOpen, setIsOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(() =>
+        window.matchMedia('(max-width: 767px)').matches
+    );
 
     useEffect(() => {
-        if (countries.length > 0) {
-            // Open the menu after the countries finished loading
+        const mediaQuery = window.matchMedia('(max-width: 767px)');
+        const handleChange = (e) => {
+            setIsMobile(e.matches);
+            // Always start collapsed on mobile, even when shrinking from desktop
+            if (e.matches) setIsOpen(false);
+        };
+        mediaQuery.addEventListener('change', handleChange);
+        return () => mediaQuery.removeEventListener('change', handleChange);
+    }, []);
+
+    useEffect(() => {
+        if (countries.length > 0 && !isMobile) {
+            // Auto-open on desktop only
             setIsOpen(true);
         }
-    }, [countries]);
+    }, [countries, isMobile]);
 
     return (
         <nav className="menu-container">
-            <a href="#" onClick={() => setIsOpen(!isOpen)}>
-                <span className={`menu-header ${isOpen ? 'toggle' : ''}`}>Lukas Larsed</span>
+            <a href="#" onClick={(e) => { e.preventDefault(); setIsOpen(!isOpen); }}>
+                <span className={`menu-header ${isOpen ? 'toggle' : ''}`}>
+                    <span className="menu-label">Lukas Larsed</span>
+                </span>
             </a>
             <ul className={`dropdown-menu ${isOpen ? 'toggle' : ''}`}>
                 {error && <li>Failed to load countries.</li>}

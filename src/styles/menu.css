@@ -60,3 +60,49 @@
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(10px);
 }
+
+@media (max-width: 767px) {
+    .menu-container a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-label {
+        display: none;
+    }
+
+    .menu-header::after {
+        content: "\e5d2";
+        font-size: 1.75rem;
+        transform: none;
+        border-left: 0;
+        line-height: 1;
+        position: relative;
+        top: -3px;
+    }
+
+    .menu-header.toggle::after {
+        content: "\e5cd";
+        transform: none;
+    }
+
+    .dropdown-menu {
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        border-right: none;
+        min-width: 180px;
+    }
+
+    .menu-container li {
+        padding: 10px 12px;
+    }
+}

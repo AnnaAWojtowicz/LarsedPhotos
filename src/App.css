@@ -84,3 +84,9 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
 .dropdown-item:hover {
   border-right: 2px solid #a29320 !important;
 }
+
+@media (max-width: 767px) {
+  body {
+    margin: 0;
+  }
+}
