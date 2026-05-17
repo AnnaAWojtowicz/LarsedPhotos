@@ -16,7 +16,7 @@
 }
 
 .symbol-country-img {
-  color: #a29320; /* remember to delete it when you fix the button function */
+  color: var(--accent-gold); /* remember to delete it when you fix the button function */
   font-weight: 200;
   font-size: 1.5rem;
   padding: 0.5rem 0;
@@ -31,7 +31,7 @@ button.symbol-button {
 }
 
 button.symbol-button:hover {
-  color: #a29320 !important;
+  color: var(--accent-gold) !important;
 }
 
 .symbol-details-group {
@@ -39,7 +39,7 @@ button.symbol-button:hover {
   align-items: center;
   justify-content: start;
   padding: 0.5rem 1.5rem 0.5rem 0;
-  border-right: 1px solid #a29320;
+  border-right: 1px solid var(--accent-gold);
   margin-right: 1rem;
 }
 
@@ -75,7 +75,7 @@ button.symbol-button:hover {
   align-self: end;
   margin-top: 2rem;
   font-size: 1.5rem;
-  /* border-right: #a29320 1px solid;
+  /* border-right: var(--accent-gold) 1px solid;
   align-self: start;
   margin-right: 1rem; */
 }

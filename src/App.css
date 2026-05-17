@@ -1,3 +1,23 @@
+:root {
+  /* Brand accent */
+  --accent-gold: #a29320;
+  --accent-gold-faded: rgba(162, 147, 32, 0.2);
+
+  /* Grays */
+  --text-gray: rgba(0, 0, 0, 0.5);
+  --frame-gray: rgba(0, 0, 0, 0.267);
+  --gray-solid: rgb(187, 187, 187);
+
+  /* Modal */
+  --modal-overlay-bg: rgb(30, 30, 30);
+  --modal-caption-color: rgb(100, 100, 100);
+  --modal-caption-hover-color: rgb(180, 180, 180);
+
+  /* Shared shadow recipes (icon + text variants) */
+  --accent-shadow-drop: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+  --accent-shadow-text: 0 1px 2px rgba(0, 0, 0, 0.75), 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
 * {
   box-sizing: border-box;
   /* background-color: white; */
@@ -82,7 +102,7 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
 }
 
 .dropdown-item:hover {
-  border-right: 2px solid #a29320 !important;
+  border-right: 2px solid var(--accent-gold) !important;
 }
 
 @media (max-width: 767px) {
@@ -122,8 +142,8 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
 .spinner {
   width: 56px;
   height: 56px;
-  border: 4px solid rgba(162, 147, 32, 0.2);
-  border-top-color: #a29320;
+  border: 4px solid var(--accent-gold-faded);
+  border-top-color: var(--accent-gold);
   border-radius: 50%;
   animation: spinner-rotate 1s linear infinite;
 }
