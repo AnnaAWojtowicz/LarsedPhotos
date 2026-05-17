@@ -31,6 +31,10 @@
     gap: 8px;
 }
 
+.album-photos a {
+    line-height: 0;
+}
+
 .album-photos .image-container {
     display: inline-block;
 }

@@ -109,6 +109,10 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after {
   body {
     margin: 0;
   }
+
+  .container.route-page {
+    background-color: var(--gray-solid);
+  }
 }
 
 .route-page {
