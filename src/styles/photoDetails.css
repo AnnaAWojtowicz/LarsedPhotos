@@ -25,6 +25,7 @@
     transform: rotate(180deg);
     color: rgba(0, 0, 0, 0.5);
     padding-left: 10px;
+    flex-shrink: 0;
 }
 
 .exif {
@@ -183,10 +184,77 @@
 @media (min-width: 768px) and (max-width: 1280px) {
     .photo-data-display {
         width: fit-content;
+        max-width: 100%;
+        margin-left: 0;
     }
 
     .exif {
         margin-left: auto;
         width: fit-content;
+    }
+
+    .title-and-photo img {
+        max-width: 100%;
+        height: auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .photo-data-display {
+        margin-left: 0;
+        margin-top: 70px;
+    }
+
+    .title-and-photo {
+        width: 100%;
+        padding: 15px 15px 15px 22px;
+    }
+
+    .title-and-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .photo-title {
+        font-size: 1.25rem;
+        writing-mode: vertical-rl;
+        padding-left: 0;
+    }
+
+    .menu-container-2 a {
+        font-size: 1.25rem;
+    }
+
+    .exif {
+        gap: 25px;
+        padding: 0 15px;
+    }
+
+    .exif .exif-header-group {
+        width: 100%;
+    }
+
+    .exif .camera-settings-map {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .exif .camera-settings-map .photo-map {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .tags-collection {
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .tag {
+        max-width: 45vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
