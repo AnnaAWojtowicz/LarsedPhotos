@@ -12,12 +12,29 @@ export function LazyLoad() {
     const { photos: allPhotos, loading: isLoading, error } = usePhotos();
     const [rows, setRows] = useState([]);
     const [selectedPhotoId, setSelectedPhotoId] = useState(null);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const modalPushedRef = useRef(false);
+
+    useEffect(() => {
+        let rafId;
+        const handleResize = () => {
+            cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                setWindowWidth(window.innerWidth);
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            cancelAnimationFrame(rafId);
+        };
+    }, []);
 
     useEffect(() => {
         if (allPhotos.length === 0) return;
 
-        const targetRowWidth = window.innerWidth * 0.7;
+        const targetRowWidth = windowWidth * 0.7;
         const baseHeight = 300;
         const gap = 3; // This much match the gap in the .lazy-row class
 
@@ -59,7 +76,7 @@ export function LazyLoad() {
         }
 
         setRows(calculatedRows);
-    }, [allPhotos]);
+    }, [allPhotos, windowWidth]);
 
     const handleImageClick = (index) => {
         setSelectedPhotoId(index);
@@ -107,7 +124,7 @@ export function LazyLoad() {
 
                     // Calculate total and adjust last image to fill exactly
                     const totalWidth = widths.reduce((sum, w) => sum + w, 0);
-                    const targetWidth = window.innerWidth * 0.7;
+                    const targetWidth = windowWidth * 0.7;
                     const totalGap = (row.photos.length - 1) * 3; // Account for CSS gaps
                     const difference = targetWidth - totalWidth - totalGap;
 
