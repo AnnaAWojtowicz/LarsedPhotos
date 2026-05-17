@@ -28,7 +28,7 @@
 
 .menu-header.toggle::after {
     transform: rotate(-135deg);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.8s ease-in-out;
 
 }
 
@@ -47,7 +47,7 @@
 
 .menu-container li {
     list-style: none;
-    padding: 7px;
+    padding: 3px 7px;
 }
 
 .dropdown-menu a {
@@ -62,7 +62,7 @@
 
 .dropdown-menu.toggle {
     opacity: 1;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
     transform: translateY(10px);
 }
 

@@ -26,8 +26,9 @@ export function Menu() {
 
     useEffect(() => {
         if (countries.length > 0 && !isMobile) {
-            // Auto-open on desktop only
-            setIsOpen(true);
+            // Auto-open on desktop after a short delay so users see it expand
+            const timer = setTimeout(() => setIsOpen(true), 1500);
+            return () => clearTimeout(timer);
         }
     }, [countries, isMobile]);
 
