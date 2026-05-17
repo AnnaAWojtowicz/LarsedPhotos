@@ -1,4 +1,4 @@
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getSpecificCountryAlbum } from "../api/getSpecificCountryAlbum";
 import "../styles/album.css";
@@ -7,6 +7,7 @@ import "../styles/lazyload.css";
 export function Album() {
     const { albumId } = useParams();
     const location = useLocation();
+    const navigate = useNavigate();
     const [albumData, setAlbumData] = useState(null);
 
     useEffect(() => {
@@ -25,6 +26,12 @@ export function Album() {
     return (
         <div className="container route-page">
             <div className="decor-album" />
+
+            <nav className="menu-container-2 album-back">
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>
+                    <span className="menu-header-2">back</span>
+                </a>
+            </nav>
 
             {location.state?.title ? (
                 <h1 className="album-title">{location.state.title}</h1>

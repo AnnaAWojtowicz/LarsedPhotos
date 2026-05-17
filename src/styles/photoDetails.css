@@ -143,9 +143,10 @@
 /* Menu */
 
 .menu-container-2 {
-    position: absolute;
+    position: fixed;
     top: 25px;
     left: 40px;
+    z-index: 10;
 }
 
 .menu-container-2 a {
