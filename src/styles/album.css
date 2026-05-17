@@ -2,7 +2,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 7%;
+    left: 135px;
     width: 3px;
     height: auto;
     background-color: #a29320;
@@ -42,4 +42,35 @@
 .album-photos .image-overlay {
     width: 100%;
     height: 100%;
+}
+
+@media (max-width: 767px) {
+    .decor-album {
+        display: none;
+    }
+
+    .album-title {
+        writing-mode: horizontal-tb;
+        transform: none;
+        top: 12px;
+        right: 16px;
+        left: auto;
+        font-size: 1.75rem;
+        color: #a29320;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75), 0 0 4px rgba(0, 0, 0, 0.4);
+        z-index: 10;
+        max-width: calc(100vw - 32px);
+        text-align: right;
+    }
+
+    .album-photos {
+        left: 0;
+        gap: 3px;
+    }
+
+    .album-photos .image-container img {
+        width: 100vw;
+        height: auto;
+        display: block;
+    }
 }
