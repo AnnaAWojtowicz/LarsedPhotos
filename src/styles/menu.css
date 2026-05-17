@@ -42,6 +42,7 @@
     right: 30px;
     transform: translateY(0);
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -62,6 +63,7 @@
 
 .dropdown-menu.toggle {
     opacity: 1;
+    pointer-events: auto;
     transition: opacity 0.8s ease, transform 0.8s ease;
     transform: translateY(10px);
 }
