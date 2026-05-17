@@ -96,7 +96,7 @@ function SpecificCountryAlbum() {
     const landscapeName = chosenTag ? `#${chosenTag}` : currentCountryName;
 
     return (
-        <div className="container-country">
+        <div className="container-country route-page">
             <div className="row">
                 <div className="col-12 d-flex justify-content-end header-country">
                         <Menu />

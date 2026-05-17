@@ -103,7 +103,7 @@ export function PhotoDetails() {
 
 
     return (
-        <>
+        <div className="route-page">
             <nav className="menu-container-2">
                 <a href="#" onClick={() => { navigate(-1); setIsOpen(!isOpen); }}>
                     <span className={`menu-header-2 ${isOpen ? 'toggle' : ''}`}>back</span>
@@ -209,6 +209,6 @@ export function PhotoDetails() {
                 }
             </div>
             {!loading && !myPhoto && <p>Photo not found</p>}
-        </>
+        </div>
     )
 }

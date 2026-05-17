@@ -23,7 +23,7 @@ export function Album() {
     }, [albumId]);
 
     return (
-        <div className="container">
+        <div className="container route-page">
             <div className="decor-album" />
 
             {location.state?.title ? (
