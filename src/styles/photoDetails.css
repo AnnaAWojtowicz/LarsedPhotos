@@ -163,3 +163,25 @@
     transform: translateX(-10px);
     transition: transform 0.3s ease-in-out;
 }
+
+@media (max-width: 1280px) {
+    .photo-data-display {
+        flex-direction: column;
+    }
+
+    .exif {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+    .photo-data-display {
+        width: fit-content;
+    }
+
+    .exif {
+        margin-left: auto;
+        width: fit-content;
+    }
+}
