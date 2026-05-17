@@ -104,8 +104,6 @@ export function PhotoDetails() {
 
     return (
         <>
-            <div className='decor' />
-
             <nav className="menu-container-2">
                 <a href="#" onClick={() => { navigate(-1); setIsOpen(!isOpen); }}>
                     <span className={`menu-header-2 ${isOpen ? 'toggle' : ''}`}>back</span>
@@ -116,6 +114,7 @@ export function PhotoDetails() {
             <div className='photo-data-display'>
                 {myPhoto &&
                     <div className='title-and-photo'>
+                        <div className='decor' />
                         <div className='photo-title'>{myPhoto.title}</div>
                         <img src={myPhoto.url800} alt={myPhoto.title} />
                     </div>
