@@ -119,7 +119,11 @@ export function LazyLoad() {
     };
 
     return (
-        isLoading ? <div>Fetching data...</div> :
+        isLoading ? (
+            <div className='spinner-container'>
+                <div className='spinner' />
+            </div>
+        ) :
             <div className='lazy-column'>
                 {error && <p>Failed to load photos.</p>}
                 {rows.map((row, rowIndex) => {

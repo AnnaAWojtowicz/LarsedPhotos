@@ -38,6 +38,11 @@
     margin-left: 50px;
 }
 
+.exif-spinner {
+    align-self: center;
+    margin: 60px 0;
+}
+
 .exif .exif-header-group {
     width: 600px;
 }

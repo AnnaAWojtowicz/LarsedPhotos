@@ -110,7 +110,11 @@ export function PhotoDetails() {
                 </a>
             </nav >
 
-            {loading && <p>Loading...</p>}
+            {loading && (
+                <div className='spinner-container'>
+                    <div className='spinner' />
+                </div>
+            )}
             <div className='photo-data-display'>
                 {myPhoto &&
                     <div className='title-and-photo'>
@@ -183,6 +187,12 @@ export function PhotoDetails() {
                         <div className='tags-collection'>
                             {tags}
                         </div>
+                    </div>
+                }
+
+                {myPhoto && !photoExifData && !exifError &&
+                    <div className='exif'>
+                        <div className='spinner exif-spinner' />
                     </div>
                 }
 
