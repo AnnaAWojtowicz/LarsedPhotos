@@ -48,21 +48,21 @@ export function Modal({ selectedPhoto, photos, onClose }) {
                         close_small
                     </span>
                 </button>
-                <button className='modal-propagate-arrow' id='modal-left-arrow' onClick={() => advancePhoto(-1)}>
-                    <span className="material-symbols-outlined">
-                        arrow_circle_left
-                    </span>
-                </button>
-                <button className='modal-propagate-arrow' id='modal-right-arrow' onClick={() => advancePhoto(1)}>
-                    <span className="material-symbols-outlined">
-                        arrow_circle_right
-                    </span>
-                </button>
                 <div
                     onClick={() => navigate(`/photo/${activePhoto.id}`, { state: { photo: activePhoto } })}
                     style={{ cursor: 'pointer' }}
                 >
                     <div className='modal-drop'>
+                        <button className='modal-propagate-arrow' id='modal-left-arrow' onClick={(e) => { e.stopPropagation(); advancePhoto(-1); }}>
+                            <span className="material-symbols-outlined">
+                                arrow_circle_left
+                            </span>
+                        </button>
+                        <button className='modal-propagate-arrow' id='modal-right-arrow' onClick={(e) => { e.stopPropagation(); advancePhoto(1); }}>
+                            <span className="material-symbols-outlined">
+                                arrow_circle_right
+                            </span>
+                        </button>
                         <img src={activePhoto.url800} alt={activePhoto.title} />
                     </div>
                     <figcaption>{activePhoto.title}</figcaption>
