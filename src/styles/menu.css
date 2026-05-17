@@ -53,6 +53,11 @@
 .dropdown-menu a {
     font-family: "Quicksand", system-ui;
     font-size: 1.5rem;
+    transition: color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    color: #a29320;
 }
 
 .dropdown-menu.toggle {
