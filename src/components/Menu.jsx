@@ -35,7 +35,7 @@ export function Menu() {
         <nav className="menu-container">
             <a href="#" onClick={(e) => { e.preventDefault(); setIsOpen(!isOpen); }}>
                 <span className={`menu-header ${isOpen ? 'toggle' : ''}`}>
-                    <span className="menu-label">Lukas Larsed</span>
+                    <span className="menu-label">Lukas <br className="menu-label-break" />Larsed</span>
                 </span>
             </a>
             <ul className={`dropdown-menu ${isOpen ? 'toggle' : ''}`}>

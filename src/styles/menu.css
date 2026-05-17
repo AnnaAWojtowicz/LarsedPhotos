@@ -61,6 +61,22 @@
     transform: translateY(10px);
 }
 
+.menu-label-break {
+    display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .menu-label {
+        display: inline-block;
+        text-align: end;
+        line-height: 1.1;
+    }
+
+    .menu-label-break {
+        display: inline;
+    }
+}
+
 @media (max-width: 767px) {
     .menu-container > a {
         display: inline-flex;
